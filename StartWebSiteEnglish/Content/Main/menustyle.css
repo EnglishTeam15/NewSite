@@ -163,7 +163,7 @@ photo {
     .account .vertical-info .progress:after {
         border: 7px solid #e9e9ea;
         left: auto;
-        right: 0;
+         /*right: 0;*/
     }
     .account .vertical-info .progress .progress-bar {
         box-shadow: none;
@@ -183,7 +183,7 @@ photo {
         font-weight: 400;
         position: absolute;
         top: -12px;
-        right: 0;
+        /*right: 0;*/
         z-index: 2;
     }
 .account .vertical-info progress.orange:before {

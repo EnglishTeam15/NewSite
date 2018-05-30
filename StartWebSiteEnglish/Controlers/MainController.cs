@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 
 namespace StartWebSiteEnglish.Controlers
 {
-  //  [Authorize]
+    [Authorize]
     public class MainController : Controller
     {
         MaterialContext db = new MaterialContext();
@@ -366,8 +366,8 @@ namespace StartWebSiteEnglish.Controlers
             }
             else
                 level = 3;
-            //ApplicationUser user = Session["User"] as ApplicationUser;
-            //user.LevelProgress = level;
+            ApplicationUser user = Session["User"] as ApplicationUser;
+            user.LevelProgress = level;
             ViewBag.YourLevel = string.Format("Ваш уровень знания языка " + level.ToString());
             return Json(new { result = ViewBag.YourLevel });
 

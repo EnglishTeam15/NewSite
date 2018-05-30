@@ -17,9 +17,9 @@
 
             var reviewQuiz = false;
 
-            var percentage = 0;
-            var percentage = 0;
-            var percentPiece = 100 / questions.length;
+           // var percentage = 0;
+            //var percentage = 0;
+          //  var percentPiece = 100 / questions.length;
 
             var rightAnswers = 0;
 
@@ -43,8 +43,8 @@
 
                 question.css('display', 'block');
 
-                percentage += percentPiece;
-                $(".progress.progress-info div").css("width", percentage + "%");
+              //  percentage += percentPiece;
+              //  $(".progress.progress-info div").css("width", percentage + "%");
             });
 
             (function($){
@@ -121,9 +121,9 @@
 
 
 
-                html += "<div class=\"progress-info progress-striped\">";
-                html += "<div id=\"percent\" class=\"bar\" style=\"width: 0%;\"></div>";
-                html += "</div>";
+                //html += "<div class=\"progress-info progress-striped\">";
+                //html += "<div id=\"percent\" class=\"bar\" style=\"width: 0%;\"></div>";
+                //html += "</div>";
 
                 ///html += "<div style=\"margin:0px; clear:both\"></div>";
                 $(this).append(html);
@@ -157,9 +157,9 @@
                     } else if (!reviewQuiz) {
                         div.find(".notice").css('display', 'none');
 
-                        percentage += percentPiece;
-                        if (percentage > 100) percentage = 100;
-                        $("#percent").css("width", percentage + "%");
+                       // percentage += percentPiece;
+                       // if (percentage > 100) percentage = 100;
+                       // $("#percent").css("width", percentage + "%");
 
                         var resultHTML = "<h3 style=\"text-align: center\">РЕЗУЛЬТАТЫ</h3>";
 
@@ -190,7 +190,7 @@
 
                         resultHTML += "<p style=\"margin: 14px 0px\" class=\"ajax\">Вы ответили на " + Math.round(((rightAnswers * 100) / questions.length) * 100) / 100 + "% вопросов.</p>";
                         resultHTML += buttonsHTML;
-                        resultHTML += "<p style=\"margin-top:25px; text-align: center\"><button class=\"btn btn-large tostart\">Просмотреть вопросы</button></p>";
+                       // resultHTML += "<p style=\"margin-top:25px; text-align: center\"><button class=\"btn btn-large tostart\">Просмотреть вопросы</button></p>";
 
                         div.animate({
                             opacity: '0'
@@ -208,9 +208,9 @@
                             });
                         });
 
-                        $(".progress.progress-info").animate({
-                            opacity: '0'
-                        }, 100, function (e) { });
+                       // $(".progress.progress-info").animate({
+                      //      opacity: '0'
+                      //  }, 100, function (e) { });
 
                         reviewQuiz = true;
                     } else {
@@ -235,17 +235,17 @@
                             });
                         });
 
-                        $(".progress.progress-info").animate({
-                            opacity: '0'
-                        }, 100, function (e) { });
+                      //  $(".progress.progress-info").animate({
+                       //     opacity: '0'
+                       // }, 100, function (e) { });
                     }
                     $.ajax({
                         type: 'POST',
-                        url: '@Url.Action("FirstTest", "Main")',
+                        url: '/Main/FirstTest',
                         data: { count: rightAnswers, allquestion: questions.length },
                         datatype: 'json',
                         success: function (result) {
-                            //  $(".ajax").html += result;
+                              $(".ajax").html += result;
                             console.log(result);
                             alert(result);
                         }
@@ -289,8 +289,8 @@
                             newQuestion.css('display', 'block');
                         });
 
-                        percentage += percentPiece;
-                        $(".progress.progress-info div").css("width", percentage + "%");
+                      //  percentage += percentPiece;
+                      //  $(".progress.progress-info div").css("width", percentage + "%");
                     }
 
                     return false;
@@ -319,8 +319,8 @@
                         newQuestion.css('display', 'block');
                     });
 
-                    percentage -= percentPiece;
-                    $(".progress.progress-info div").css("width", percentage + "%");
+                 //   percentage -= percentPiece;
+                 ///   $(".progress.progress-info div").css("width", percentage + "%");
 
                     return false;
                 });
@@ -340,15 +340,15 @@
 
                         question.css('display', 'block');
 
-                        $(".progress.progress-info div").css("width", "0");
-                        $(".progress.progress-info div").css("display", "block");
-                        $(".progress.progress-info").animate({
-                            opacity : '1'
-                        }, 300, function(e){
-                            percentage = 0;
-                            percentage += percentPiece;
-                            $(".progress.progress-info div").css("width", percentage + "%");
-                        });
+                      //  $(".progress.progress-info div").css("width", "0");
+                     //   $(".progress.progress-info div").css("display", "block");
+                     //   $(".progress.progress-info").animate({
+                     //       opacity : '1'
+                    //    }, 300, function(e){
+                    //        percentage = 0;
+                     //       percentage += percentPiece;
+                     //       $(".progress.progress-info div").css("width", percentage + "%");
+                     //   });
                      });
                 });
             });

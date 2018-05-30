@@ -27,16 +27,7 @@
 <body class="landing">
     <div id="page-wrapper">
 
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('a[href^="#"]').on("click", "a", function (event) {
-                    event.preventDefault();
-                    var id = $(this).attr('href'),
-                        top = $(id).offset().top;
-                    $('html,body').animate({ scrollTop: top }, 1500);
-                });
-            });
-        </script>
+
 
         <header id="header" class="alt">
             <div id="windowLogin" style="display: none;">
@@ -184,6 +175,15 @@
     <script src="~/Scripts/js/skel.min.js"></script>
     <script src="~/Scripts/js/util.js"></script>
     <script src="~/Scripts/js/main.js"></script>
-
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('a[href^="#"]').on("click", "a", function (event) {
+                event.preventDefault();
+                var id = $(this).attr('href'),
+                    top = $(id).offset().top;
+                $('html,body').animate({ scrollTop: top }, 1500);
+            });
+        });
+    </script>
 </body>
 </html>

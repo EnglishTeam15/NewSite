@@ -37,6 +37,7 @@
 }
 
     .contact_form li:first-child, .contact_form li:last-child {
+        list-style: none;
         border-bottom: 1px solid #777;
     }
 
@@ -112,13 +113,7 @@ input.hidden_email{
 }
 
 button.submit {
-    background-color: #68b12f;
-    background: -webkit-gradient(linear, left top, left bottom, from(#68b12f), to(#50911e));
-    background: -webkit-linear-gradient(top, #68b12f, #50911e);
-    background: -moz-linear-gradient(top, #68b12f, #50911e);
-    background: -ms-linear-gradient(top, #68b12f, #50911e);
-    background: -o-linear-gradient(top, #68b12f, #50911e);
-    background: linear-gradient(top, #68b12f, #50911e);
+    background: #1b4167;
     border: 1px solid #509111;
     border-bottom: 1px solid #5b992b;
     border-radius: 3px;

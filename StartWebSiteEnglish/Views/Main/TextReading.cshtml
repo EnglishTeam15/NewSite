@@ -4,6 +4,7 @@
 @{
     ViewBag.Title = Model.Name;
     Layout = "~/Views/Shared/_Main.cshtml";
+    ApplicationUser user = (ApplicationUser)Session["User"];
 }
 
 @section Links{
