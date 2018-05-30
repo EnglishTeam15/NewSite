@@ -1,0 +1,143 @@
+﻿@model StartWebSiteEnglish.Models.TestTextModel
+@{
+    /**/
+
+    ViewBag.Title = "Тест";
+    Layout = "~/Views/Shared/_Main.cshtml";
+    int count = 1, countR = 0;
+}
+@section Links{
+
+    <script src="~/Scripts/tests/test_for_text.js"></script>
+    @*<link href="~/Content/Main/test_for_text.css" rel="stylesheet" />*@
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="~/Content/Main/materialssyle.css" rel="stylesheet" />
+    <style>
+        .container {
+            width: 100%;
+            text-align: left;
+        }
+
+        .BlockQ {
+            border: 1px solid #bdbdbd;
+            width: 75%;
+            border-radius: 4px;
+            background-color: #f0ffff;
+            padding: 8px;
+            margin-bottom: 18px;
+        }
+
+        .Quiz {
+            margin-left: 20px;
+        }
+    </style>
+}
+
+@section Body{
+
+    <h2>Тест</h2>
+    @if (Model != null)
+    {
+        <div style="display: block; margin-bottom: 50px;">
+            @if (Model.Text != null)
+            {
+                <div id="translate" style="display: none; background: #fff;">
+                    <p>
+                        @Model.Text
+                    </p>
+                </div>
+            }
+            <button onclick="showTranslate()" type="submit" style="float: left; margin-left: 50px;" name="action" value="ViewText">Показать текст</button>
+        </div>
+        <div class="container">
+            <div class="Quiz">
+
+                <h4 style="margin-top: 4%;"> <span class="label label-info">Questions :</span> </h4>
+
+               @foreach (var question in Model.Questions)
+                {
+                <div class="BlockQ">
+                    <div class="Question" style="padding: 2%;">
+                        <span class="label label-warning"> @count.ToString()</span>
+                        <span id="@string.Format("{0}{1}", "ID_Q", count)" style="display:none;">@question.QuestionID</span>
+                        <p style="display: inline; padding: 2%;" id="@string.Format("{0}{1}", "Q", count)">@question.QuestionText</p>
+                    </div>
+                    <div class="Choices" style="margin-left: 8%; margin-bottom: 10px;">
+                        @foreach (var choice in question.Choices)
+                        {
+                            <label class="radio-inline">
+                                <input type="radio" name="@string.Format("{0}{1}", "inlineRadioOptions", count)" id="@string.Format("{0}{1}", "inlineRadio", countR)" value="@choice.ChoiceText" style="margin-left: -16px;"> @choice.ChoiceText
+                            </label><br />
+                            countR++;
+                        }
+                    </div> <!--END Choices-->
+                    <div id="@string.Format("{0}{1}{2}", "Ans", "Q", count)">
+                    </div>
+                </div> <!-- END BlockQ -->
+                count++;
+                }
+                <span id="countQuections" style="display:none;">@count</span>
+                <button type="button" id="SubmitQuiz" class="btn btn-default" style="margin-top: 10px; margin-bottom: 20px;"><span class="glyphicon glyphicon-ok"></span>  Проверить  </button>
+                }
+
+            </div> <!-- END QUIZ -->
+        </div>
+    }
+    else
+    {
+        <div><p style="color: #270b0b;">Для данного материала нет пока теста, вскоре он появится</p> </div>
+    }<!-- END CONTAINER -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#SubmitQuiz').on('click', function () {
+                //count Questions
+                var sel = $('#countQuections').text();
+                console.log(sel);
+                var resultQuiz = [], countQuestion = parseInt(sel), question = {}, j = 1;
+                for (var i = 1; i < countQuestion; i++) {
+                    question = {
+                        QuestionID: $('#ID_Q'+ i).text(),
+                        QuestionText: $('#Q' + i).text(),
+                        AnswerQ: $('input[name=inlineRadioOptions' + i + ']:checked').val()
+                    }
+                    resultQuiz.push(question);
+                }
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("TestText", "Main")',
+                    data: { resultQuiz },
+                    success: function (response) {
+                        if (response.result.length > 0)
+                        {
+                            for(var i = 0; i <response.result.length; i++ )
+                            {
+                                if(response.result[i].isCorrect == true)
+                                {
+
+                                    $('#AnsQ' + j).html('<div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Правильно</div>');
+                                }
+                                else
+                                {
+                                    $('#AnsQ' + j).html('<div class="alert alert-danger" role="alert"> <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Не верный ответ. Правильный - <b>' + response.result[i].AnswerQ + '</b></div>');
+                                }
+                                j++;
+                            }
+                        }
+                        else
+                        {
+                            alert("Something Wrong");
+                        }
+                        //console.log(response.result.length);
+                    },
+                    error: function (response) {
+                    }
+                });
+                console.log(resultQuiz);
+            });
+        });
+    </script>
+}
+
+
+

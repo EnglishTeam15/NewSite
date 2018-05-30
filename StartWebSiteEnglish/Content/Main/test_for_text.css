@@ -1,0 +1,27 @@
+﻿#translate {
+    height: 300px;
+    overflow: auto;
+    width: 90%;
+    white-space: pre-line;
+    margin-bottom: 20px;
+    border: 1px solid;
+}
+
+.block-left {
+    display: block;
+    float: left;
+}
+
+ol li {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+li span.question {
+    float: left;
+    margin-left: 5px;
+}
+
+input[type="radio"] {
+    float: left;
+}

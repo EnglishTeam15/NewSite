@@ -1,0 +1,61 @@
+﻿
+    <style>
+            /*#mask {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 9000;
+            background-color: #000;
+            display: none;
+        }*/
+
+            #boxes .window {
+                position: absolute;
+                left: 0;
+                top: 0px;
+                -top: 40px;
+                width: 440px;
+                height: 200px;
+                display: none;
+                z-index: 9999;
+                padding: 20px;
+                overflow: hidden;
+            }
+
+            #boxes #dialog {
+                width: 375px;
+                height: 203px;
+                padding: 10px;
+                background-color: #ffffff;
+            }
+
+            .top {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 370px;
+                height: 30px;
+                background: #0085cc;
+                padding: 8px 20px 6px 10px;
+            }
+
+            .close {
+                float: right;
+            }
+
+            .content {
+                padding-top: 35px;
+            }
+    </style>
+
+
+    <div id="boxes">
+        <div id="dialog" class="window">
+            Регистрация прошла успешла
+            <div class="top"><a href="#" class="link close">Закрыть</a></div>
+            <div class="content">Для входа на сайт проверьте свою почту и перейдите по ссылке.</div>
+        </div>
+    </div>
+
+    <!-- Маска, затемняющая фон -->
+    @*<div id="mask"></div>*@

@@ -1,0 +1,77 @@
+﻿@using StartWebSiteEnglish.Models
+@*@model List<Quastion>*@
+
+@{
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+
+@section Links{
+    @*<link href="~/Content/Traing/wordtranslate.css" rel="stylesheet" />*@
+    <link href="~/Content/Traing/traings.css" rel="stylesheet" />
+}
+@section Body{
+    <script>
+        function swalAler(ln) {
+            var link = ln.href;
+            var titl = ln.title;
+            swal({
+                title: 'Подтвердить',
+                text: titl,
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#DD6B55',
+                confirmButtonText: 'Завершить',
+                cancelButtonText: 'Отменить',
+                closeOnConfirm: false,
+                closeOnCancel: true
+            },
+                function () {
+                    window.location.href = link;
+                    if (isConfirm) {
+                        swal('Готово!', 'Сообщение удалено!', 'success');
+                    }
+                    // else {
+                    ///      swal('Закрыть', 'Сообщение не удалено', 'error');
+                    //  }
+                });
+            return false;
+        }
+    </script>
+    <div style="display: block;">
+        <a style="float: left; margin-left: 50px;" onclick="return swalAler(this)" href="/Main/Traning" title="Вы дейсвительно хотите завершить изучение?" class="icons-content-back">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+        <h2>Слово - перевод</h2>
+    </div>
+    <div class="block-test" style="width: 100%; margin-top: -50PX;background: #dadfe3;">
+        <div class="main">
+            <div id="datewords" hidden>@ViewBag.WordQuestions</div>
+            <div class="wrapper">
+                <span>1</span>/
+                <span>@ViewBag.CountQuest</span>
+            </div>
+            <ul class="dropdown">
+                <li>Question <span>1</span></li>
+                <li>Question <span>2</span></li>
+                <li>Question <span>3</span></li>
+                <li>Question <span>4</span></li>
+                <li>Question <span>5</span></li>
+            </ul>
+            <p class="question" style="width: 60%;margin-bottom: 50px;"></p>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <button class="submit" style="float: left; margin-left: 80px;">Проверить</button>
+            <a id="finishTraing" style="float: left; margin-left: 80px; display: none" href="/Main/Traning">Завершить</a>
+        </div>
+    </div>
+}
+@section Last{
+    @*<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>*@
+    <script src="~/Scripts/tests/wordtranslate.js"></script>
+}
+
+

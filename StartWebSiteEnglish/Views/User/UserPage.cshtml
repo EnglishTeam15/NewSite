@@ -1,0 +1,132 @@
+﻿@using StartWebSiteEnglish.Models
+@{
+    ApplicationUser user = (ApplicationUser)Session["User"];
+}
+
+@{
+    Layout = "~/Views/Shared/_Main.cshtml";
+    ViewBag.Title = "Профиль";
+    @section UserInfo{
+    }
+
+    //User user = Session["User"] as User;
+
+}
+
+@section Links{
+    <link href="~/Content/UserPage/dictionaty_style.css" rel="stylesheet" />
+    <link href="~/Content/UserPage/main.css" rel="stylesheet" />
+    <link href="~/Content/UserPage/user_style.css" rel="stylesheet" />
+}
+
+@section Body{
+
+    <script type="text/javascript">
+        //Функция показа
+
+
+        function showDictionary(state, page, checkState) {
+            document.getElementById('window').style.display = state;
+            document.getElementById('wrap').style.display = state;
+            document.getElementById('title').innerText = page;
+            //document.getElementById('check').style.display = checkState;
+
+
+        }
+        function showLearn(state) {
+
+            document.getElementById('windowLearn').style.display = state;
+            document.getElementById('wrap').style.display = state;
+        }
+    </script>
+
+    <div>
+        <div id="wrap" style="display: none;"></div>
+
+        <div id="windowLearn" style="display: none;">
+            @Html.Partial("LearnDictionary")
+        </div>
+        <div id="window" style="display: none;">
+            @Html.Partial("Dictionary")
+        </div>
+        <div class="user-profile" style="height: 550px;">
+            <div class="col-sm-12" style="display:flex; height: 300px; ">
+                <div class="col-sm-12 col-sm-8" style="text-align: left">
+                    @*<h2>@Model.UserName</h2>*@
+                    <h2>@user.UserName</h2>
+                    @*<p><strong>Email </strong> @Model.Email </p>*@
+                    <p><strong>Email </strong> @user.Email </p>
+                    <p><strong>Уровень </strong> A @user.Сomplexity </p>
+                    <div class="progress orange" style="width: @user.LevelProgress; margin-top:50px;">
+                        <div class="progress-bar" style="width: @user.LevelProgress; background:#fe3b3b;">
+                            <div class="progress-value"> @user.LevelProgress </div>
+                        </div>
+                    </div>
+                    <!-- <p><strong>Знания: </strong>
+                    <span class="tags">HTML5</span>
+                    <span class="tags">CSS3</span>
+                    <span class="tags">jQuery</span>
+                    <span class="tags">Bootstrap</span>
+                    </p> -->
+                </div>
+
+                <div class="col-xs-12 col-sm-8 text-center">
+                    <div class="setting-user">
+                        <a class="link-setting" href="/User/Setting">
+                            <div>
+                                <i class="fas fa-cog"></i>
+                            </div>
+                        </a>
+                    </div>
+                    <figure>
+                        <div class="avatar user" style="width: 200px; height: 200px; position: absolute;">
+                        @using (Html.BeginForm("Upload", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @*onclick="location.href='@Url.Action("UploadPhoto", "User", new { enctype = "multipart/form-data" })'"*@
+                            @*<i style="font-size: 130px;margin: 20px;"></i>*@
+                            
+                            <img src="@user.PhotoUrl" height="150"/>
+                            <input type="file" name="upload" style="font-size: 12px;"/>
+                            <span>
+                                <input type="submit" value="Загрузить" style="font-size: 12px;"/>
+                            </span>
+                          @*<img scr="@Model.PhotoUrl"  style="width: 100px; height:100px"/>
+                            
+                            @using (Html.BeginForm("UploadPhoto", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                   <input type="file" name="upload" style="margin-right: -50px;"/> <br>
+                                <input type="submit" value="Загрузить"  style="margin-top: -50px;border-color: #2CA8FF;"/>
+                            }*@
+                         }
+                        </div>
+                    </figure>
+
+                </div>
+                <!-- Setting -->
+
+
+            </div>
+            <div class="col-xs-12 divider text-center">
+                <div class="col-xs-12 col-sm-4 emphasis">
+                    <h2><strong> 500 </strong></h2>
+                    <p><small>Слов выучено</small></p>
+                    <button class="btn btn-success btn-block" id="ready" name="ready" onclick="showDictionary('block', 'Изученные слова','none')">
+                        Посмотреть
+                    </button>
+                </div>
+                <div class="col-xs-12 col-sm-4 emphasis">
+                    <h2><strong>723</strong></h2>
+                    <p><small>Слов на изучении</small></p>
+                    <button class="btn btn-info btn-block" id="learn" name="learn" onclick="showDictionary('block','Слова на изучении', 'block')">
+                        Просмотреть
+                    </button>
+                </div>
+                <div class="col-xs-12 col-sm-4 emphasis">
+                    <h2><strong>2500</strong></h2>
+                    <p><small>Словарный запас</small></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+}

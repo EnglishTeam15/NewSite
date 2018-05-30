@@ -1,0 +1,273 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" / >
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" / >
+
+#wrap {
+    display: none;
+    opacity: 0.8;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 16px;
+    background-color: #c2b20d;
+    z-index: 100;
+    overflow: auto;
+}
+
+#window, #windowLogin {
+    background: #13AC91;
+    width: 480px;
+    margin: 50px auto;
+    display: none;
+    z-index: 200;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    padding: 16px;
+    border-radius: 15px;
+   
+}
+
+    #window center {
+        height: 480px;
+    }
+
+.close {
+    margin-left: 364px;
+    margin-top: 4px;
+    cursor: pointer;
+}
+
+.forget-password {
+    float: right;
+    color: #f0f0f0;
+    border-bottom: 0px;
+}
+
+    .forget-password:hover {
+        color: #111;
+    }
+
+input[type='checkbox'] {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    margin: 10px 0 0 20px;
+}
+
+    input[type='checkbox'] + label {
+        margin-right: 50px;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 20px;
+        font: 14px/20px 'Open Sans', Arial, sans-serif;
+        color: #fff;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+    }
+
+        input[type="checkbox"] + label:before {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border: 1px solid #6cc0e5;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: .6;
+            -webkit-transition: all .12s, border-color .08s;
+            transition: all .12s, border-color .08s;
+        }
+
+    input[type="checkbox"]:checked + label:before {
+        width: 10px;
+        border-radius: 0;
+        color: #111;
+        opacity: 1;
+    }
+
+/*input[type='checkbox']#checkbox-f + label {
+    border: 1px solid $border-white;
+    background: transparent;
+    @include transition(0.5s, ease, background);
+    background-position: cennter;
+    background-size: 40px 40px;
+}
+
+input[type='checkbox']#checkbox-f:checked{
+    background: transparent url(http://katheermizal.info/works/working-with-checkbox/assets/images/tick-icon-white.png) no-repeat;
+}
+
+.check {
+    margin-left: 3px;
+    font-size: 11px;
+    color: #444;
+    text-shadow: 0 1px 0 #fff;
+   
+}*/
+@media screen and (max-width: 600px) {
+    #window {
+        width: 400px;
+    }
+}
+
+.col-md-offset-3 {
+    width: 100%;
+}
+
+.row {
+    display: block;
+}
+
+.form-horizontal {
+    padding-bottom: 40px;
+    border-radius: 15px;
+    margin-top: -80px;
+    widows: 100%;
+}
+
+.register-form {
+    display: block;
+    position: relative;
+    margin-top: 90px;
+    width: 88%;
+}
+
+.form-horizontal .heading {
+    display: block;
+    font-size: 32px;
+    text-align: center;
+    font-weight: 300;
+    padding: 25px 0;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 25px;
+}
+
+.form-horizontal .form-group {
+    padding: 0 40px;
+    margin: 0 0 25px 0;
+    position: relative;
+}
+
+.form-horizontal .form-control {
+    /* background: #f0f0f0; */
+    background-color: #D4EFF4;
+    /* border: none; */
+    color: #111;
+    border-radius: 10px;
+    box-shadow: none;
+    padding: 0 20px 0 45px;
+    height: 60px;
+    transition: all 0.3s ease 0s;
+}
+
+    .form-horizontal .form-control:focus {
+        background: #e0e0e0;
+        box-shadow: none;
+        outline: 0 none;
+    }
+
+.form-horizontal .form-group i {
+    position: absolute;
+    top: 21px;
+    left: 60px;
+    font-size: 17px;
+    color: #c8c8c8;
+    transition: all 0.5s ease 0s;
+}
+
+.form-horizontal .form-control:focus + i {
+    color: #00b4ef;
+}
+
+.form-horizontal .main-checkbox {
+    float: left;
+    width: 20px;
+    height: 20px;
+    /* background: #11a3fc; */
+    background: #f3ea65;
+    border-radius: 50%;
+    position: relative;
+    margin: 5px 0 0 5px;
+    border: 1px solid #11a3fc;
+}
+
+    .form-horizontal .main-checkbox label {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        cursor: pointer;
+    }
+
+        .form-horizontal .main-checkbox label:after {
+            content: "";
+            width: 10px;
+            height: 5px;
+            position: absolute;
+            top: 5px;
+            left: 4px;
+            border: 3px solid #fff;
+            border-top: none;
+            border-right: none;
+            background: transparent;
+            opacity: 0;
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        }
+
+    .form-horizontal .main-checkbox input[type=checkbox] {
+        visibility: hidden;
+    }
+
+        .form-horizontal .main-checkbox input[type=checkbox]:checked + label:after {
+            opacity: 1;
+        }
+
+.form-horizontal .text {
+    float: left;
+    color: #000;
+    margin-left: 7px;
+    line-height: 20px;
+    padding-top: 5px;
+    text-transform: capitalize;
+}
+
+.form-horizontal .btn {
+    font-size: 20px;
+    /* color: #fff; */
+    /* background: #00b4ef; */
+    background: #f3ea65;
+    border-radius: 10px;
+    padding: 10px 25px;
+    border: none;
+    text-transform: capitalize;
+    transition: all 0.5s ease 0s;
+}
+
+@media only screen and (max-width: 479px) {
+    .form-horizontal .form-group {
+        padding: 0 25px;
+    }
+
+        .form-horizontal .form-group i {
+            left: 45px;
+        }
+
+    .form-horizontal .btn {
+        padding: 10px 20px;
+    }
+}
+
+.error-right {
+    display: block;
+    position: relative;
+    float: right;
+    color: #f80606;
+}

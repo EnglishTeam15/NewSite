@@ -1,0 +1,24 @@
+﻿@model StartWebSiteEnglish.Models.GrammerText
+@{
+    ViewBag.Title = "AddGrammer";
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+
+@section Body{
+
+    <div>@ViewBag.ResultAdd</div>
+
+    @using (Html.BeginForm("AddGrammer", "Admin", FormMethod.Post))
+    {
+        <div  style="height: 20%;">
+            <div>Name text</div>
+            @Html.EditorFor(u => u.Name)
+        </div>
+        <div style="height: 75%;">
+            <div>Text</div>
+            <div style="width: 60%;">@Html.TextAreaFor(u => u.Text, 20, 80, "text")</div>
+        </div>
+        <input type="submit" value="Добавить" name="Add" />
+        <button >@Html.ActionLink("Отмена","Grammer")</button>
+    }
+}

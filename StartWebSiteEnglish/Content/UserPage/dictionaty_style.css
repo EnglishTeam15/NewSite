@@ -1,0 +1,159 @@
+#wrap{
+        display: none;
+        opacity: 0.8;
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        padding: 16px;
+        background-color: rgba(1, 1, 1, 0.725);
+        z-index: 100;
+        overflow: auto;
+    }
+#window{
+
+        background: #fff;
+        width: 65%;
+        height: 600px;
+        margin: 50px auto;
+        display: none;
+        z-index: 200;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 16px;
+    }
+#window center{
+        height: 480px;
+    }
+    
+.close{
+        margin-left: 364px;
+        margin-top: 4px;
+        cursor: pointer;
+    }
+.navigation{
+    display: block;
+}
+table.table-hover{
+    width: 90%;
+    line-height: 2.5;
+}
+table th.word {
+        width: 200px;
+  }
+
+@media screen and (max-width: 800px) {
+    
+     table thead.imgword {
+   display: none;
+ }
+ table th.word {
+        width: 100px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+    table.table-hover{
+        font-size: 12px;
+    }
+     table .imgword {
+   display: none;
+ }
+ table th.word {
+        width: 80px;
+  }
+}
+@media screen and (max-width: 600px) {
+ table thead {
+   display: none;
+ }
+  table .imgword {
+   display: none;
+ }
+
+   table tr {
+    margin-bottom: 10px;
+    display: block;
+    border-bottom: 2px solid #ddd;
+
+  }
+  table td {
+    display: block;
+    text-align: right;
+    font-size: 13px;
+    border-bottom: 1px dotted #ccc;
+    border-right: 1px solid transparent;
+  }
+  
+  table td:before {
+    content: attr(data-label);
+    float: left;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+ /*  table td:nth-child(5):before{
+    float:right;
+ }
+ table td:nth-child(6):before{
+    float:right;
+ } */
+}
+
+
+/*.header {
+    padding: 10px 40px;
+    color: white;
+    text-align: center;
+}
+
+/* Clear floats after the header */
+.header:after {
+    content: "";
+    display: table;
+    clear: both;
+}*/
+/*#myInput{
+    background: #e7b48fa8;
+}
+/* Style the input */
+input {
+    border: none;
+    color: black;
+    width: 75%;
+    padding: 10px;
+    float: left;
+    font-size: 15px;
+}
+
+/* Style the "Add" button */
+.addBtn {
+    padding: 10px;
+    width: 20%;
+    background: #d9d9d9;
+    color: #555;
+    float: left;
+    text-align: center;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.addBtn:hover {
+    background-color: #bbb;
+}*/
+
+.close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 12px 16px 12px 16px;
+}
+
+.close:hover {
+    background-color: #f44336;
+    color: white;
+}

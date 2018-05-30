@@ -1,0 +1,109 @@
+﻿@using StartWebSiteEnglish.Models
+@model  MaterialText
+
+@{
+    ViewBag.Title = Model.Name;
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+
+@section Links{
+    @*<link href="~/Content/textreading.css" rel="stylesheet" />*@
+    <link href="~/Content/Main/materialssyle.css" rel="stylesheet" />
+    <link href="~/Content/sweet-alert.css" rel="stylesheet" />
+    <script src="~/Scripts/sweet-alert.min.js"></script>
+    <script>
+        function swalAlert(ln) {
+            var link = ln.href;
+            var titl = ln.title;
+            swal({
+                title: 'Подтвердить',
+                text: titl,
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#DD6B55',
+                confirmButtonText: 'Удалить',
+                cancelButtonText: 'Отменить',
+                closeOnConfirm: false,
+                closeOnCancel: true
+            },
+                function () {
+                    window.location.href = link;
+                    if (isConfirm) {
+                        swal('Готово!', 'Сообщение удалено!', 'success');
+                    }
+                    // else {
+                    ///      swal('Закрыть', 'Сообщение не удалено', 'error');
+                    //  }
+                });
+            return false;
+        }
+    </script>
+    <style>
+        /*.header-page .icons-content-back {
+            position: absolute;
+            left: -30px;
+            top: 32px;
+        }*/
+
+        .icons-content-back i {
+            margin: 20px;
+            font-size: 1.5em;
+            color: #111;
+        }
+    </style>
+}
+@section Body{
+    <script>
+        // When the user scrolls the page, execute myFunction
+        window.onscroll = function () { myFunction() };
+
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+
+        function showTranslate() {
+            var x = document.getElementById("translation");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+
+    <div class="header-page" style="display: inline-flex;">
+        <a href="/Main/Material" data-back-to-jungle="" data-tooltip="Вернуться к Грамматике" class="icons-content-back"><i class="fas fa-arrow-left"></i></a>
+        <h2 style="line-height: 1.8em">@Model.Name</h2>
+        @*<div class="progress-container">
+                <div class="progress-bar" id="myBar"></div>
+            </div>*@
+    </div>
+    <div class="text" style="height: ">
+        <p>@Model.Text</p>
+    </div>
+
+    <div id="translation" class="text" style="display: none;">
+        <h1>@Model.NameTranslate</h1>
+        <p>@Model.Translate </p>
+    </div>
+    <div style="padding-bottom: 50px;">
+        <button type="submit">
+            <a style="text-decoration: none; color:#111;" href="/Admin/DeleteText/@Model.Id" title="Удалить текст @Model.Name?" onclick="return swalAlert(this)">Удалить текст</a>
+        </button>
+        <button type="submit">
+            <a style="text-decoration: none; color:#111;" href="/Admin/ChangeText/@Model.Id">Изменить</a>
+        </button>
+        <button onclick="showTranslate()" type="submit" name="action" value="ViewText">Показать перевод</button>
+        <button type="submit" name="action" value="PassTheTest">
+            <a style="text-decoration: none; color:#111;" href="/Main/TestsText/@Model.Id">Пройти тест</a>
+        </button>
+
+        <button type="submit" name="action" value="PassTheTest">
+            <a style="text-decoration: none; color:#111;" href="/Admin/AddTestForMaterial/@Model.Id">Добавить тест</a>
+        </button>
+    </div>
+
+}

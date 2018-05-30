@@ -1,0 +1,72 @@
+﻿@model List<StartWebSiteEnglish.Models.Words>
+
+@{
+    ViewBag.Title = "Выбор слов";
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+@section Body{
+    <link href="~/Content/Main/materialssyle.css" rel="stylesheet" />
+    <style>
+        thead {
+            border-bottom: 2px solid #123;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid;
+        }
+    </style>
+    <div style="display: block; height: 100%;">
+        <div  style="width: 88%;">
+            <a href="/Main/AllDictionary" style="float: left;font-size: 30px; margin-top: 15px;" data-back-to-jungle="" data-tooltip="Вернуться к Грамматике" class="icons-content-back"><i class="fas fa-arrow-left"></i></a>
+            <h2 class="name">@ViewBag.TitleChoiceWord</h2>
+        </div>
+        <div>
+            <p id="errormesage">@ViewBag.ChoiceWordsMessage</p>
+        </div>
+        <div class="reading-table" style="background: #fff; padding: 15px;">
+            <input type="button" class="btn btn-info" id="bttn_Click" value="Выбрать" />
+            <div style="display: none;" id="star-learn">
+                <a href="/Main/Traning" class="btn btn-info">Начать изучать</a>
+            </div>
+            <table class="table-material">
+                <thead>
+                    <tr class="head-table">
+                        <td style="text-align: left; width: 10px;">Отметить все  <input type="checkbox" id="chekall" /></td>
+                        <th style="text-align: left;  width: 30%;">Слово</th>
+                        <th style="text-align: left;  width: 30%;">Перевод</th>
+                        <th style="width:100px;">Изображение</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model)
+                    {
+                        var checkBoxId = "chk" + x.Id;
+                        var tdId = "td" + x.Id;
+                        var did = "d" + x.Id;
+                        var photo = "photo" + x.Id;
+                        <tr>
+                            <td style="text-align: left; width: 10px;"><input type="checkbox" id="@checkBoxId" class="chkclass" value="@x.Id" /></td>
+                            <td style="text-align: left;  width: 30%;" id="@tdId">@x.Word</td>
+                            <td style="text-align: left;  width: 30%;" id="@did">@x.Translation</td>
+                            <td width="60px;" id="@photo">
+                                @if (x.PictureUrl == "" || x.PictureUrl == null)
+                                {
+                                    <img src="~/fonts/none-image.gif" alt="Paris" style="width:80px">
+                                }
+                                else
+                                {
+                                    <img src="@x.PictureUrl" alt="Paris" style="width:80px">
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="clearfix">&nbsp;</div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="~/Scripts/choiceword_15.05.js"></script>
+}
+
+

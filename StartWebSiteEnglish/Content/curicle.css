@@ -1,0 +1,310 @@
+.best-blog{
+    background-color: #edfdfd;
+	 width: 100%;
+    height: 500px;
+}
+.content{
+    margin: 0 auto;
+    position: relative;
+}
+.best-blog .content{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 89px 0 140px;
+}
+.better-no-find {
+    max-width: 421px;
+    width: 100%;
+    display: inline-block;
+    padding-top: 49px;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 30px;
+    color: #364752;
+    text-align: left;
+    margin-left: 60px;
+}
+.better-no-find h2 {
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 40px;
+    display: block;
+    padding: 15px 0;
+    margin: 0 0 18px;
+    color: #000;
+}
+.better-no-find p {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 30px;
+    color: #364752;
+    display: block;
+    margin: 0 0 8px;
+}
+.link-button {
+    font-size: 16px;
+    line-height: 25px;
+    color: #000;
+    border-bottom: 2px solid #3B9D9B;
+    position: relative;
+}
+
+/* cicrle effects */
+.circle {
+    display: inline-block;
+    position: relative;
+    padding: 80px;
+    vertical-align: top;
+    background: url('../fonts/dotted-circle.png') 50% 50% no-repeat;
+}
+.circle .free-instrument{
+    display: flex;
+    position: relative;
+    width: 190px;
+    height: 190px;
+    background: #3b9d9b;
+    border-radius: 50% ;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.circle .free-instrument span {
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 25px;
+    display: block;
+    color: #fff;
+    padding-top: 7px;
+}
+.circle .free-instrument small {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 18px;
+    text-align: center;
+    display: block;
+    color: #fff;
+    padding-top: 27px;
+}
+.circle .align-bl{
+    width: 368px;
+    height: auto;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+}
+.circle .align-bl.top {
+    top: 95px;
+    left: -10px;
+}
+
+.lesson-circle{
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+    background-color: #d4eff4;
+}
+.lesson-circle.move-up{
+    top: 0;
+    margin-top: -108px;
+}
+
+.lesson-circle .hover{
+    position: absolute;
+    display: flex;
+    visibility: hidden;
+}
+.lesson-circle:hover  div.hover {
+    position: absolute;
+    width: 192px;
+    height: 192px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    visibility: initial;
+    border-radius: 50%;
+    text-align: center;;
+}
+.lesson-circle:hover{
+     color: #fff;
+}
+.lesson-circle .hover span {
+    font-size: 24px;
+    line-height: 25px;
+    color: #052636;
+    letter-spacing: 1px;
+}
+.lesson-circle .hover .hover-more-details {
+    position: absolute;
+    bottom: 27px;
+    right: 0;
+    left: 0;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    text-align: center;
+    text-decoration: none;
+    color: #3B9D9B;
+}
+
+.lesson-circle.lissent-lesson .hover{
+    left: 90px;
+    top: -16px;
+}
+.lesson-circle.examen-lesson .hover {
+    top: 92px;
+    left: -57px;
+}
+.lesson-circle.writing-lesson .hover {
+    top: -16px;
+    left: -202px;
+}
+.lesson-circle.microfon-lesson .hover {
+    left: 31px;
+    top: -180px;
+}
+.lesson-circle.listen-call-lesson .hover {
+    left: -153px;
+    top: -180px;
+}
+
+
+.lesson-circle.lissent-lesson:before {
+    width: 22px;
+    height: 48px;
+    background-color: transprent;
+    right: -19px;
+    top: 27px;
+    -webkit-transform: rotate(18deg);
+    transform: rotate(18deg);
+}
+.lesson-circle.examen-lesson:before {
+    width: 49px;
+    height: 22px;
+    background-color: transparent;
+    left: 13px;
+    bottom: -19px;
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+}
+.lesson-circle.writing-lesson:before {
+    width: 49px;
+    height: 22px;
+    background-color: transparent;
+    left: -33px;
+    top: 41px;
+    -webkit-transform: rotate(-106deg);
+    transform: rotate(-106deg);
+}
+.lesson-circle.microfon-lesson:before {
+    width: 58px;
+    height: 19px;
+    background-color: transparent;
+    right: -22px;
+    top: -5px;
+    -webkit-transform: rotate(39deg);
+    transform: rotate(39deg);
+}
+.lesson-circle.listen-call-lesson:before {
+    width: 58px;
+    height: 19px;
+    background-color: transparent;
+    right: -22px;
+    top: -5px;
+    -webkit-transform: rotate(39deg);
+    transform: rotate(39deg);
+}
+
+.lesson-circle:after {
+    content: "";
+    display: block;
+    margin-top: 50%;
+    margin-left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+.lesson-circle.examen-lesson:hover:after,
+ .lesson-circle.lissent-lesson:hover:after, 
+ .lesson-circle.listen-call-lesson:hover:after, 
+ .lesson-circle.microfon-lesson:hover:after, 
+ .lesson-circle.writing-lesson:hover:after {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background-color: #3B9D9B;
+    border-radius: 50%;
+    position: absolute;
+}
+.lesson-circle.lissent-lesson:after{
+    width: 42px;
+    height: 44px;
+    background: url(https://www.learnathome.ru/img/landing/lissent-lesson.svg) no-repeat;
+}
+.lesson-circle.writing-lesson:after {
+    width: 30px;
+    height: 37px;
+    background: url(https://www.learnathome.ru/img/landing/writing-lesson.svg) no-repeat;
+}
+.lesson-circle.examen-lesson:after {
+    width: 40px;
+    height: 38px;
+    background: url(https://www.learnathome.ru/img/landing/examen-lesson.svg) no-repeat;
+}
+.lesson-circle.microfon-lesson:after {
+    width: 30px;
+    height: 44px;
+    margin-left: 28px;
+    background: url(https://www.learnathome.ru/img/landing/microfon-lesson.svg) no-repeat;
+}
+.lesson-circle.listen-call-lesson:after {
+    width: 42px;
+    height: 44px;
+    background: url(https://www.learnathome.ru/img/landing/listen-call-lesson.svg) no-repeat;
+}
+
+.lesson-circle{
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+    background-color: #d4eff4;
+}
+.lesson-circle.lissent-lesson::before,
+.lesson-circle.examen-lesson::before, 
+.lesson-circle.listen-call-lesso::before, 
+.lesson-circle.microfon-lesson::before, 
+.lesson-circle.writing-lesson::before {
+    position: absolute;
+    content: '';
+}
+.circle .align-bl.bottom {
+    display: flex;
+    align-items: center;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    bottom: 15px;
+    left: -5px;
+}
+
+/* button */
+.circle .circle-button {
+    position: absolute;
+    bottom: -34px;
+    left: 100px;
+    text-align: center;
+    text-decoration: none;
+    padding: 0 18px;
+    background-color: #fff;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 25px;
+    color: #005a78;
+    text-transform: uppercase;
+}

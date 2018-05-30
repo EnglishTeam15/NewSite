@@ -1,0 +1,114 @@
+﻿@model StartWebSiteEnglish.Models.DropDowmModel
+@{
+    ViewBag.Title = "Тренируй слова";
+    Layout = "~/Views/Shared/_Main.cshtml";
+
+}
+
+@section Links{
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="~/Content/Main/style.css" rel="stylesheet" />
+}
+
+@section Body{
+    <style>
+        .service-description p{
+            font-size: 12px;
+        }
+    </style>
+    <h2>Тренировки</h2>
+    <hr />
+    <div id="services" class="cf">
+        @if (ViewBag.ErrorLearn != null)
+        {
+            <div class="error">
+                <p>@ViewBag.ErrorLearn</p>
+            </div>
+        }
+            <div>
+              
+                    @using (Html.BeginForm("ShowWords", "Main", FormMethod.Post))
+                    {
+                        if (ViewBag.DropDownValues != null)
+                        {
+                            @Html.DropDownListFor(m => m.Id, Model.CountWord, "Выбрать кол-во слов")
+                        }  
+                             <input type="submit" value="Посмотреть слова" />
+                    }
+            </div>
+        <section class="service">
+            <div class="service-icon">
+                <span class="fa fa-paper-plane"></span>
+                <br />
+                Слово - Перевод
+            </div>
+            <div class="service-description">
+                <p>
+                    Тренировка “Слово-перевод” улучшает навык перевода слов с английского на ваш родной язык.
+                </p>
+                @Html.ActionLink("Изучить", "WordTranslate", Model, new {@class= "learn_button" })
+            </div>
+        </section>
+        <section class="service">
+            <div class="service-icon">
+                <span class="fa fa-paint-brush"></span>
+                <br />
+                Перевод - Слово
+            </div>
+            <div class="service-description">
+                <p>
+                    Тренировка “Перевод-слово” развивает навык перевода с вашего родного языка на английский.
+                </p>
+                @Html.ActionLink("Изучить", "TranslateWord", Model, new { @class = "learn_button" })
+            </div>
+        </section>
+        <section class="service">
+            <div class="service-icon">
+                <span class="fa fa-rocket"></span>
+                <br />
+                Тренировка ниписания
+            </div>
+            <div class="service-description">
+                <p>
+                    Тренировка “Конструктор слов” формирует навыки обратного перевода и написания английских слов.
+                </p>
+                @Html.ActionLink("Изучить", "Wreatting", Model, new { @class = "learn_button" })
+            </div>
+        </section>
+        <section class="service">
+            <div class="service-icon">
+                <span class="fa fa-university"></span>
+                <br />
+                Карточки
+            </div>
+            <div class="service-description">
+                <p>
+                    Словарные карточки помогают быстро проверить знания английских слов из личного словаря.
+                </p>
+                @Html.ActionLink("Изучить", "CardWord", Model, new { @class = "learn_button" })
+
+            </div>
+        </section>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.service').hover(function () {
+                var $this = $(this);
+                if ($this.hasClass("open")) {
+                    $this.find('.service-icon').animate({ left: "0" });
+                    $this.find('.service-description').animate({ left: "100%" });
+                    $this.removeClass("open");
+                }
+                else {
+                    $this.find('.service-icon').animate({ left: "-100%" });
+                    $this.find('.service-description').animate({ left: "0" });
+                    $this.addClass("open");
+                }
+            });
+        });
+    </script>
+}
+
+

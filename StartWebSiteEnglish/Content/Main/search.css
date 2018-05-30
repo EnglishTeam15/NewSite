@@ -1,0 +1,114 @@
+div.text-search-container {
+    display: block;
+    width: 85%;
+}
+div.inpit.text {
+    width: 100%;
+}
+
+.text-search-container input[type=text] {
+    width: 100%;
+    padding-right: 36px;
+    height: 37px;
+    font-size: 15px;
+}
+.text-search-container .btn-run-search {
+    width: 17px;
+    padding: 9px 9px 0;
+    right: 1px;
+    top: 1px;
+    height: 24px;
+}
+a {
+    color: #317FC0;
+    cursor: pointer;
+}
+
+.text-search-container .btn-run-search .fas.fa-search {
+    display: block;
+}
+i.fas.fa-search{
+    background-position: -240px 0;
+    /*margin-top: -45px;*/
+    /*margin-left: 320px;*/
+}
+input.text, input[type=text], input[type=email], input[type=password] {
+    height: 34px;
+    padding: 0 5px;
+    box-sizing: border-box;
+    border: 1px solid;
+    border-color: #979797 #DDD #DEDEDE;
+    border-radius: 2px;
+    background: #FDFDFD;
+    background: -webkit-linear-gradient(top,#F5F5F5,#FDFDFD);
+    background: linear-gradient(top,#F5F5F5,#FDFDFD);
+    font-size: 13px;
+    -webkit-box-shadow: 0 1px #D5D5D5 inset;
+    box-shadow: 0 1px #D5D5D5 inset;
+    /* font-family: "Open Sans",Arial,sans-serif; */
+    color: #333;
+}
+
+.content-item {
+    display: block;
+    margin: 0;
+    height: 46px;
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+    padding: 12px 0;
+}
+.content-item .right {
+    width: 325px;
+    float: right;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: inherit;
+    font-weight: 400;
+    line-height: 1;
+    color: inherit;
+}
+.clear {
+    clear: both;
+    height: 1px;
+    overflow: hidden;
+    font-size: 1px;
+}
+.content-item .pages_count {
+    float: left;
+    text-align: center;
+    padding-top: 6px;
+    width: 105px;
+}
+
+.content-item .date {
+    font-size: 13px;
+    color: #333;
+    width: 90px;
+    padding-top: 6px;
+    overflow: hidden;
+    float: left;
+    text-align: right;
+}
+
+.content-item .content-link {
+    display: block;
+    max-width: 100%;
+    flex: left;
+    font-size: 22px;
+    height: 23px;
+    font-weight: 400;
+}
+.content-item .themes {
+    overflow: hidden;
+    font-size: 11px;
+    width: 330px;
+    color: #999;
+    margin-left: 45px;
+}
+.search-results .search-content {
+    padding: 20px 0;
+    clear: both;
+}

@@ -1,0 +1,383 @@
+﻿@{
+    ViewBag.Title = "Изучение анлийского языка";
+    Layout = "~/Views/Shared/_Main.cshtml";
+    //User user = Session["User"] as User;
+}
+
+@section Links{
+    @*<link href="https://www.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />*@
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Content/Main/simple.css" rel="stylesheet" />
+    <style>
+        .message h2 {
+            font-weight: 100;
+            font-size: 30pt;
+            line-height: 1.3em;
+            margin: 15px 0;
+            color: #111;
+        }
+        .message p{
+            text-align: left;
+        }
+        div.message {
+            position: relative;
+            padding: 10px;
+            padding-left: 35px;
+            margin: 30px 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,.3);
+            background: #BBB;
+            color: #FFF;
+            -webkit-transition: all .5s ease;
+            -moz-transition: all .5s ease;
+            -ms-transition: all .5s ease;
+            -o-transition: all .5s ease;
+            transition: all .5s ease;
+        }
+
+            div.message:hover {
+                box-shadow: 0 15px 20px rgba(10,0,10,.3);
+                -webkit-filter: brightness(110%);
+            }
+
+            div.message:before {
+                content: '';
+                font-family: FontAwesome;
+                position: absolute;
+                display: block;
+                top: -21px;
+                left: 50%;
+                margin: 0 -21px;
+                font-size: 20px;
+                line-height: 24px;
+                text-align: center;
+                width: 24px;
+                padding: 10px;
+                background: inherit;
+                box-shadow: 0 5px 10px rgba(0,0,0,.25);
+                color: rgba(255,255,255,.75);
+                border-radius: 50%;
+                border: 2px solid transparent;
+                z-index: 2;
+            }
+
+            div.message.information:before {
+                width: 50px;
+                content: '\f129';
+            }
+
+            div.message.announcement:before {
+                width: 50px;
+                content: '\f0f3';
+            }
+
+            div.message.success:before {
+                width: 50px;
+                content: '\f00c';
+            }
+
+            div.message.warning:before {
+                width: 50px;
+                content: '\f12a';
+            }
+
+            div.message.error:before {
+                width: 50px;
+                content: '\f00d';
+            }
+
+            div.message.information {
+                background: #60a8c0;
+            }
+
+            div.message.warning {
+                background: #E74;
+            }
+
+            div.message.success {
+                background: #5A6;
+            }
+
+            div.message.announcement {
+                background: #d4a739;
+            }
+
+            div.message.error {
+                background: #C43;
+            }
+
+
+
+
+
+        /*h5.group.inner {
+            text-align: left;
+        }
+
+        p.group.inner {
+            font-size: 15px;
+            text-align: left;
+        }
+
+        .glyphicon {
+            margin-right: 5px;
+        }
+
+        .thumbnail {
+            margin-bottom: 20px;
+            padding: 0px;
+            -webkit-border-radius: 0px;
+            -moz-border-radius: 0px;
+            border-radius: 0px;
+        }
+
+        .item.list-group-item {
+            float: none;
+            width: 100%;
+            background-color: #fff;
+            margin-bottom: 10px
+        }
+
+            .item.list-group-item:nth-of-type(odd):hover, .item.list-group-item:hover {
+                background: rgb(105,65,152)
+            }
+
+            .item.list-group-item .list-group-image {
+                margin-right: 10px
+            }
+
+            .item.list-group-item .thumbnail {
+                margin-bottom: 0px
+            }
+
+            .item.list-group-item .caption {
+                padding: 9px 9px 0px 9px
+            }
+
+            .item.list-group-item:nth-of-type(odd) {
+                background: #eeeeee
+            }
+
+            .item.list-group-item:before, .item.list-group-item:after {
+                display: table;
+                content: " "
+            }
+
+            .item.list-group-item img {
+                float: left
+            }
+
+            .item.list-group-item:after {
+                clear: both
+            }
+
+        .list-group-item-text {
+            margin: 0 0 11px
+        }*/
+    </style>
+}
+@section Body{
+
+    <h3>Как пользоваться сайтом</h3>
+    <hr />
+
+    @*<section id="main-section">
+            <h1><i class="fa fa-mobile"></i> Mobile Friendly Reading v2.0</h1>
+            <h2 class="subtitle">Requires: jQuery &amp; CSS3 / Browser Width: 800px</h2>
+            <p>
+                With todays technology growing at such a fast pace, websites have to keep up with all the different devices that can browse the web. Responsive design is a giant leap forward for allowing all these devices to view appropriate data on our sites. The problem is sometimes the data we would show on a device like a computer would and should have more information then what you want to show a person on a device like a phone. With this plugin we trim down paragraphs for mobile users allowing for a better viewing while still allowing them access to all the information.
+                <a href="#" class="reduce">Reduce Text</a>
+            </p>
+            <h2>Works per paragraph</h2>
+            <p>
+                This plugin works on per paragraph basis so each one can be expanded and contracted for maxium mobile friendliness. =)
+                <a href="#" class="reduce">Reduce Text</a>
+            </p>
+            <h2>Works on short &amp; long paragraphs</h2>
+            <p>
+                No matter how long or short your paragraph is, you can add easily add or remove the plugin to suite your needs. Don't want the plugin to shorten your text? Don't add the recude link and it wont!
+            </p>
+        </section>*@
+
+    <div class="information message">
+        <a href="/Main/AllDictionary">
+            <h2>Словарь</h2>
+        </a>
+        <p> В словаре представлены наборы слов для изучения. В каждом наборе необходимо выбрать мнимум 5 слов для изучения и дальше выбрать тренировку. Мы предлагаем следующие тренировки: "Слово - Перевод", "Перевод - Слово". </p>
+    </div>
+
+    <div class="announcement message">
+        <a href="/Main/Grammer">
+            <h2>Грамматика</h2>
+            </a>
+            <p> Изучайте грамматику по списку, после каждого урока можно закрепить знания по данной теме с помощью упражнений и тестов. Что позволяеет лучше усвоить материал.</p>
+    </div>
+    <div class="success message">
+        <a href="/Main/Traning">
+            <h2>Тренировки</h2>
+            </a>
+            <p>Здесь вы можете тренировать выбранные вами в словаре слова..</p>
+    </div>
+    <div class="warning message">
+        <a href="/Main/Material">
+            <h2>Чтение</h2>
+            </a>
+            <p> Читайте тексты. Чтение повышает знания владения языков, повышает ваш словарный запас и запоминание фраз. После прочтения тестов вы можете пройти тест.</p>
+    </div>
+    @*<div class="error message">
+            <h2>Error</h2>
+            <p>This is an 'error message' div. It stresses that there is an immediate problem. this should be used sparingly.</p>
+        </div>*@
+
+    @*<div class="container" style="width: 90%;">
+            <div class="well well-sm">
+                <strong>Вид: </strong>
+                <div class="btn-group">
+                    <a href="#" id="list" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-th-list"></span>Список
+                    </a>
+                    <a href="#" id="grid" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-th"></span>Сетка
+                    </a>
+                </div>
+            </div>
+            <div id="products" class="row grid-group">
+
+                <div class="item col-xs-4 col-lg-4">
+                    <div class="thumbnail">
+                        <img class="group list-group-image" src="http://bootstraptema.ru/images/type/400x250.png" alt="1" />
+                        <div class="caption">
+                            <h4 class="group inner list-group-item-heading">Словарь</h4>
+                            <p class="group inner list-group-item-text">
+                                В словаре представлены наборы слов для изучения. В каждом наборе необходимо выбрать мнимум 5 слов для изучения и дальше выбрать тренировку. Мы предлагаем следующие тренировки: "Слово - Перевод", "Перевод - Слово"
+                            </p>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6">
+                                    <a class="btn btn-success" href="#">Начать</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item col-xs-4 col-lg-4">
+                    <div class="thumbnail">
+                        <img class="group list-group-image" src="http://bootstraptema.ru/images/type/400x250.png" alt="1" />
+                        <div class="caption">
+                            <h5 class="group inner list-group-item-heading">Грамматика</h5>
+                            <p class="group inner list-group-item-text">
+                                Изучайте грамматику по списку, после каждого урока можно закрепить знания по данной тепе с помощбю упражнений и тестов. Что позволяеет лучше усвоить материал.
+                            </p>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6">
+                                    <a class="btn btn-success" href="#">Начать</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item col-xs-4 col-lg-4">
+                    <div class="thumbnail">
+                        <img class="group list-group-image" src="http://bootstraptema.ru/images/type/400x250.png" alt="1" />
+                        <div class="caption">
+                            <h5 class="group inner list-group-item-heading">Тренировки</h5>
+                            <p class="group inner list-group-item-text">
+                                Здесь вы можете тренировать выбранные вами в словаре слова.
+                            </p>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6">
+                                    <a class="btn btn-success" href="#">Начать</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item col-xs-4 col-lg-4">
+                    <div class="thumbnail">
+                        <img class="group list-group-image" src="http://bootstraptema.ru/images/type/400x250.png" alt="1" />
+                        <div class="caption">
+                            <h5 class="group inner list-group-item-heading">Чтение</h5>
+                            <p class="group inner list-group-item-text">
+                                Читайте тексты. Чтение повышает знания владения языков, повышает ваш словарный запас и запоминание фраз. После прочтения тестов вы можете пройти тест.
+                            </p>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6">
+                                    <a class="btn btn-success" href="#">Начать</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>*@
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#list').click(function (event) {
+                event.preventDefault();
+                $('#products .item').addClass('list-group-item');
+            });
+            $('#grid').click(function (event) {
+                event.preventDefault();
+                $('#products .item').removeClass('list-group-item');
+                $('#products .item').addClass('grid-group-item');
+            });
+        });
+
+        $(function () {
+
+            // Set Responsive Size
+            var res = 800;
+
+            // Global Variables
+            var $min = $('.reduce'),
+                $win = $(window),
+                parent = $min.closest('p');
+
+            // The Magic
+            $min.hide();
+            parent.append('<span class="hide"></span>');
+            parent.click(function (e) {
+                if ($(e.target).is('.reduce')) {
+                    e.preventDefault();
+                    return;
+                }
+                if ($(window).width() <= res) {
+                    $(this).css({ 'max-height': '100%', 'cursor': 'inherit' });
+                    $(this).addClass('open');
+                    $('.hide', this).fadeOut(400);
+                    $('.reduce', this).css({ 'display': 'block' });
+                }
+                return;
+            });
+            $min.click(function () {
+                $(this).closest('p').animate({ 'max-height': '120px' }, 150).css({ 'cursor': 'pointer' });
+                $(this).siblings('.hide').fadeIn(100);
+                $(this).hide();
+                $('.open').removeClass('open');
+                return;
+            });
+            function win() {
+                if ($win.width() < res) {
+                    parent.css({ 'max-height': '120px', 'cursor': 'pointer' });
+                    $('.hide').show();
+                    $('.open').css({ 'max-height': '100%', 'cursor': 'inherit' });
+                    $('.open').find('.hide').hide();
+                    $('.open').find('.reduce').show();
+                } else {
+                    parent.css({ 'max-height': '100%', 'cursor': 'inherit' });
+                    $('.hide').hide();
+                    $min.hide();
+                }
+            }
+            $win.resize(win);
+            win();
+        });
+
+    </script>
+}
+@section Last{
+
+
+    <script src="~/Scripts/tests/bootstrap.min.js"></script>
+}

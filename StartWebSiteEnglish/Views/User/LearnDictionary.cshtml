@@ -1,0 +1,98 @@
+﻿@using StartWebSiteEnglish.Models
+@using StartWebSiteEnglish.HtmlHelpers
+@*@model  MaterialViewModel<Word>*@
+
+<div style="height: 85%;">
+    <i class="fas fa-times-circle close" onclick="showLearn('none')"></i>
+    <div class="linear-head">
+        <div class="material name" style="text-align: center;">
+            <h3 id="title">Слова на изучении</h3>
+        </div>
+        @*<div id="myDIV" class="header">
+                <input type="text" id="myInput" placeholder="Title...">
+                <span onclick="newElement()" class="addBtn">Add</span>
+            </div>*@
+
+        <table class="table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">№</th>
+                    <th scope="col">Выбрать</th>
+                    <th scope="col" class="word">Слово</th>
+                    <th scope="col" class="word">Перевод</th>
+                    <th scope="col" class="imgword">Изображение</th>
+                    <th scope="col" class="fun">Переместить</th>
+                    <th scope="col" class="fun">Удалить</th>
+                </tr>
+            </thead>
+
+            <tbody class="text-table">
+                @*@foreach (var x in Model.Materials)
+                    {
+                        int i=1;
+                        <tr>
+                            <td>@i</td>
+                            <td data-label="Слово">x.Word</td>
+                            <td data-label="Перевод">x.Translate</td>
+                            <td class="imgword">x.ImageHref</td>
+                            <td><a href="#" class="myButton">На узучение</a> </td>
+                            <td>
+                                <a class="myButton" href="#">Удалить</a>
+                                <i class="fas fa-trash-alt"></i>
+                            </td>
+                        </tr>
+                        i++;
+                    }*@
+                <tr>
+                    <td>1</td>
+                    <td><input type="checkbox" /></td>
+                    <td data-label="Слово">Orakgjhvbg b  f dfg nge</td>
+                    <td data-label="Перевод">Апельshfns dfg sffсин</td>
+                    <td class="imgword">dtj</td>
+                    <td><a href="#" class="myButton">На узучение</a> </td>
+                    <td>
+                        <a class="myButton" href="#">Удалить</a>
+                        <i class="fas fa-trash-alt"></i>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><input type="checkbox" /></td>
+                    <td data-label="Слово">Apple</td>
+                    <td data-label="Перевод">Яблоко</td>
+                    <td class="imgword">srth</td>
+                    <td><a href="#" class="myButton">На узучение</a> </td>
+                    <td>
+                        <a class="myButton" href="#">Удалить</a>
+                        <i class="fas fa-trash-alt"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+            </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<div class="btn-group">
+    @* @Html.PageLinks(Model.pageInfo, x => Url.Action("Dictionary", new { page = x }))*@
+</div>
+

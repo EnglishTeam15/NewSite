@@ -1,0 +1,53 @@
+﻿@model StartWebSiteEnglish.Models.MaterialText
+
+@{
+    ViewBag.Title = "ChahgeText";
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+
+@section Body{
+
+    <style>
+        .text-area {
+            min-width: 90%;
+            min-height: 300px;
+        }
+        .text {
+            font-size: 18px;
+            width: 250px;
+            height: 30px;
+        }
+
+    </style>
+
+    @using (Html.BeginForm("Change", "Admin", FormMethod.Post))
+    {
+        <fieldset>
+            @Html.HiddenFor(m=>m.Id)
+            <p>
+                @Html.LabelFor(m => m.Name, "Название текста")
+                <br />
+                @Html.EditorFor(m => m.Name, new { @class = "text" })
+            </p>
+            <p>
+                @Html.LabelFor(m => m.Text, "Текст")
+                <br />
+                @Html.TextAreaFor(m => m.Text, new { @class = "text-area" })
+
+            </p>
+            <p>
+                @Html.LabelFor(m => m.Translate, "Перевод")
+                <br />
+                @Html.TextAreaFor(m => m.Translate, new {@class="text-area"})
+
+            </p>
+            <p>
+                @Html.LabelFor(m => m.Complexity, "Сложность")
+                <br />
+                @Html.EditorFor(m => m.Complexity)
+            </p>
+            <p> <input type="submit" value="Сохранить изменения" /></p>
+        </fieldset>
+    }
+}
+

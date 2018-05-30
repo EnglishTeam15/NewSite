@@ -1,0 +1,57 @@
+﻿@model StartWebSiteEnglish.Models.EditPassword
+
+@{
+
+    ViewBag.Title = "Настройки";
+    @section UserInfo{}
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+@section Links{
+    <link href="~/Content/UserPage/setting.css" rel="stylesheet" />
+    <link href="~/Content/UserPage/dictionaty_style.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        //Функция показа
+        function show(state) {
+
+            document.getElementById('window').style.display = state;
+            document.getElementById('wrap').style.display = state;
+        }
+    </script>
+}
+
+@section Body{
+
+    @using (Html.BeginForm("EditUserName", "User", FormMethod.Post, new { @class = "contact_form" }))
+    {
+        <li>
+            <div style="display: table;">
+                <input type="text" name="newUserName" placeholder="Введите новый логин"> <br />
+                <button class="submit" type="submit" style="margin: 0 auto;">Сохранить логин </button>
+            </div>
+        </li>
+    }
+
+    @using (Html.BeginForm("EditEmail", "User", FormMethod.Post, new { @class = "contact_form" }))
+    {
+        <li>
+            <div style="display: table;">
+                <input type="email" name="newEmail" placeholder="Введите новый Email"><br />
+                <button class="submit" type="submit" style="margin: 0 auto;">Сохранить Email</button>
+            </div>
+        </li>
+    }
+
+    @using (Html.BeginForm("EditPassword", "User", FormMethod.Post, new { @class = "contact_form" }))
+    {
+        <li>
+            <div style="display: table;">
+                <input type="password" name="Password" placeholder="Старый пароль"><br />
+                <input type="password" name="NewPassword" placeholder="Новый пароль"><br />
+                <input type="password" name="ConfirmNewPassword" placeholder="Повтор нового пароль"><br />
+                <button class="submit" type="submit" style="margin: 0 auto;">Сохранить пароль</button>
+            </div>
+        </li>
+    }
+}
+}

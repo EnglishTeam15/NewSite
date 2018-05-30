@@ -1,0 +1,107 @@
+﻿@model StartWebSiteEnglish.Models.GrammerText
+@{
+    ViewBag.Title = Model.Name;
+    Layout = "~/Views/Shared/_Main.cshtml";
+    //User user = Session["User"] as User;
+}
+
+@section Links{
+    <script>
+        function swalAlert(ln) {
+            var link = ln.href;
+            var titl = ln.title;
+            swal({
+                title: 'Подтвердить',
+                text: titl,
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#DD6B55',
+                confirmButtonText: 'Удалить',
+                cancelButtonText: 'Отменить',
+                closeOnConfirm: false,
+                closeOnCancel: true
+            },
+                function () {
+                    window.location.href = link;
+                    if (isConfirm) {
+                        swal('Готово!', 'Сообщение удалено!', 'success');
+                    }
+                    // else {
+                    ///      swal('Закрыть', 'Сообщение не удалено', 'error');
+                    //  }
+                });
+            return false;
+        }
+
+        function showDelete(state) {
+            document.getElementById('delete').style.display = state;
+            document.getElementById('wrap').style.display = state;
+            //document.getElementById('titledelete').innerText = page;
+            //document.getElementById('check').style.display = checkState;
+
+
+        }
+    </script>
+    <style>
+        .header-page {
+            margin: 20px 30px;
+            background: #b83c2e26;
+            border-style: dashed;
+            padding: 10px;
+        }
+
+        .text {
+            width: 90%;
+            text-indent: 20px;
+            white-space: pre-line;
+            word-spacing: 2.5px;
+            line-height: 30px;
+            text-align: left;
+            margin-top: -30px;
+        }
+
+        .header-page .icons-content-back {
+            position: absolute;
+            left: 15px;
+        }
+
+        .icons-content-back i {
+            margin: 20px;
+            font-size: 1.5em;
+            color: #111;
+        }
+    </style>
+}
+@section Body{
+    <div class="header-page">
+        <a style="margin: 0 10px 0 30px" href="/Main/Grammer" data-back-to-jungle="" data-tooltip="Вернуться к Грамматике" class="icons-content-back"><i  class="fas fa-arrow-left"></i></a>
+        <h2 style="margin-right: 25px;">@Model.Name</h2>
+    </div>
+    <div id="wrap" style="display: none;"></div>
+    <div id="delete" style="display: none;">
+        @Html.Partial("DeleteMaterial")
+    </div>
+    <div class="text">
+        <p>@Model.Text</p>
+    </div>
+    <div style="padding-bottom: 50px;">
+        @*@if (user.RoleId == 2)
+        {*@
+        @*<button type="submit"><a style="text-decoration: none; color:#111;" href="/Admin/DeleteGrammer/@Model.Id" title="Удалить @Model.Name?" onclick="return swalDelete('block')">Удалить</a></button>*@
+       @* <button type="submit" onclick="return showDelete('block')">Удалить</button>*@
+        <button type="submit">
+            <a style="text-decoration: none; color:#111;" href="/Admin/DeleteGrammer/@Model.Id" title="Удалить текст @Model.Name?" onclick="return swalAlert(this)">Удалить текст</a>
+        </button>
+        @*<button type="submit"><a style="text-decoration: none; color:#111;" href="/Admin/DeleteGrammer/@Model.Id">Удалить</a></button>*@
+        <button type="submit"> <a style="text-decoration: none; color:#111;" href="/Admin/ChangeGrammer/@Model.Id">Изменить</a></button>
+        <button type="submit" name="action" value="PassTheTestGrammer"> <a style="text-decoration: none; color:#111;" href="/Main/GrammerTest/@Model.Id">Пройти тест</a></button>
+        <button type="submit" name="action" value="Exisase"><a style="text-decoration: none; color:#111;" href="/Admin/TextTest/@Model.Id">Перейти к упражнениям</a></button>
+        @*  *@
+        @*@if (user.RoleId == 1)
+        {
+            <a href="/Admin/ChangeText/@Model.Id">Изменить</a>
+            <a href="/Admin/DeleteText/@Model.Id" title="Удалить текст @Model.Name?" onclick="return swalAlert(this)">Удалить материал</a>
+        }*@
+    </div>
+}
+

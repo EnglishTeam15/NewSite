@@ -1,0 +1,117 @@
+﻿@using StartWebSiteEnglish.Models
+@{
+    ApplicationUser user = (ApplicationUser)Session["User"];
+}
+
+@using StartWebSiteEnglish.Models
+@{
+    Layout = null;
+    //User user = Session["User"] as User;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Main/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Main/menustyle.css" rel="stylesheet" />
+    <link href="~/Content/UserPage/main.css" rel="stylesheet" />
+
+
+    @RenderSection("Links", false)
+
+    <link rel="stylesheet" type="text/css" href="css/media.css" media="all and (max-width: 900px)">
+    <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
+</head>
+<body style="background-image: url('../../fonts/retina_wood.png');">
+    @if (IsSectionDefined("UserInfo"))
+    {
+        ViewData["UserInfo"] = false;
+        @RenderSection("UserInfo");
+    }
+    else
+    {
+        ViewData["UserInfo"] = true;
+    }
+    <div id="header" class="alt">
+
+
+        <header>
+            <h1><a href="/Main/Main" style="text-decoration: none;">English</a> by DVYA</h1>
+            <nav id="nav">
+                <a href="/Home/Exid" class="button" style="font-size: 1.2em; text-decoration: none;">Выход</a>
+            </nav>
+        </header>
+    </div>
+    <div style="display:block;">
+        <div style="display:block;">
+            <center style=" min-height: 100vh; background-repeat: no-repeat;">
+                <div class="center-page">
+                    <left-menu>
+                        <div class="left_menu ">
+                            <div class="account">
+                                @if ((Boolean)ViewData["UserInfo"])
+                                {
+                                    <div class="horizontal-info">
+                                        <div class="account account-photo">
+                                            @*<photo>
+
+                                                </photo>*@
+                                            <a href="/User/UserPage" style="animation: none;">
+                                                @*<i class="fas fa-user"></i>*@
+                                                <img src="@user.PhotoUrl" height="150" />
+                                            </a>
+                                        </div>
+                                        <div class="account account-name">@user.UserName</div>
+                                    </div>
+                                    <div class="vertical-info">
+                                        <div class="level" style="font-size: 15px; margin-bottom: 20px;">Уровень анлгийского языка: A @user.LevelProgress</div>
+                                        <div class="progress orange">
+                                            <div class="progress-bar" style="width:@user.LevelProgress; background:#fe3b3b;">
+                                                <div class="progress-value">@user.LevelProgress</div>
+                                            </div>
+                                        </div>
+                                        <div class="vocabulary" style="font-size: 15px; margin-bottom: 20px;">Словарный запас: 0</div>
+
+                                    </div>
+                                }
+                            </div>
+
+                            <div class="menu_function">
+                                <div class="item"><a href="/Main/Main" class="left-link">Главная</a></div>
+                                <div class="item"><a href="/Main/AllDictionary" class="left-link">Словарь</a></div>
+                                <div class="item"><a href="/Main/Grammer" class="left-link">Грамматика</a></div>
+                                <div class="item"><a href="/Main/Traning" class="left-link">Тренировки</a></div>
+                                <div class="item"><a href="/Main/Material" class="left-link">Чтение</a></div>
+                            </div>
+                        </div>
+                    </left-menu>
+
+                    <div class="center-menu" style="min-height: 100vh;">
+                        @RenderSection("Body")
+                    </div>
+                </div>
+            </center>
+        </div>
+        <footer>
+            <p style="padding-top: 15px;">© 2018<a style="color:#0a93a6; text-decoration:none;" href="#"> BootSnipp And TomGeek76</a>, All rights reserved 2016-2017.</p>
+        </footer>
+    </div>
+
+    @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>*@
+
+    @*<script src="~/Scripts/js/jquery.min.js"></script>
+        <script src="~/Scripts/js/jquery.dropotron.min.js"></script>
+        <script src="~/Scripts/js/jquery.scrollgress.min.js"></script>*@
+    @*<script src="~/Scripts/js/skel.min.js"></script>
+        <script src="~/Scripts/js/util.js"></script>*@
+    @*<script src="~/Scripts/js/main.js"></script>*@
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
+    @RenderSection("Last", false)
+</body>
+</html>

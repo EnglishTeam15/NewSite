@@ -1,0 +1,170 @@
+﻿
+.main {
+    width: 85%;
+    min-height: 400px;
+    /* height: 100%; */
+    margin-top: 80px;
+    /* margin-left: 10px; */
+    /* border: 1px solid; */
+    border: 2px solid #134e89;
+    border-radius: 20px;
+    padding: 20px;
+    /*background: #dadfe3;*/
+    background: #fff;
+}
+
+    .main .question {
+        font-size: 2em;
+    }
+
+    .main ul {
+        list-style: none;
+    }
+
+    .main li {
+        background: #e1f9f7;
+        text-decoration: none;
+        border: 1px solid lightgray;
+        margin: 10px;
+        padding: 10px 10px 10px 50px;
+        border-radius: 15px;
+    }
+
+    .main .dropdown {
+        margin-right: 3px;
+        /*z-index: 999;*/
+        position: absolute;
+        top: 115px;
+        padding-left: 0;
+        box-shadow: 1px 1px 10px;
+        /*dropdow is hidden by default*/
+        display: none;
+    }
+
+    .main .wrapper {
+        margin-bottom: 15px;
+        float: left;
+        background: #018fd0;
+        padding: 3px 15px;
+        border-radius: 4px;
+        width: 100px;
+    }
+
+    .main .dropdown li {
+        border: 0px;
+        font-size: 0.9em;
+        width: 100px;
+        margin: 0px;
+        background: white;
+    }
+
+    .main li:hover {
+        background: #3571a6;
+    }
+    /*disable hover effect when li tag is selected*/
+    .main .selected, .selected:hover {
+        background: #FFDEAD;
+    }
+
+    .main .correct, .correct:hover {
+        background: #32dd31;
+        color: white;
+    }
+
+    .main .wrong, .wrong:hover {
+        background: red;
+        color: white;
+    }
+
+    .main button {
+        padding: 5px 14px;
+        font-size: 1.1em;
+        border: none;
+        border-radius: 5px;
+        margin: 10px 0 0 0;
+        float: right;
+        cursor: pointer;
+        font-size: 1em;
+        border: none;
+        padding: 10px 15px;
+        line-height: 18px;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+        vertical-align: baseline;
+        background: #075da8;
+        color: white;
+        text-decoration: none !important;
+        display: inline-block;
+        -webkit-font-smoothing: subpixel-antialiased;
+        -webkit-transition: background-color 200ms ease-in-out;
+        -moz-transition: background-color 200ms ease-in-out;
+        -o-transition: background-color 200ms ease-in-out;
+        transition: background-color 200ms ease-in-out;
+    }
+
+
+    .main .submit {
+        color: white;
+        background: #018fd0;
+    }
+
+    .main .next {
+        background: #B0C4DE;
+    }
+
+    .main .finalize {
+        background: #1A1AFF;
+    }
+
+    .main .back {
+        background: #ffff33;
+    }
+
+    .main .doNotDisplay {
+        display: none;
+    }
+
+    .main td, th {
+        border: 1px solid lightgray;
+        padding: 10px;
+        text-transform: uppercase;
+        font-weight: 700;
+        /*font-size:14px;*/
+    }
+
+    .main th {
+        border-bottom: 3px solid gray;
+        background: #C2CCE0;
+    }
+
+    .main table {
+        border: 2px solid gray;
+        border-spacing: 0px;
+        border-collapse: collapse;
+    }
+
+    .main td {
+        cursor: pointer;
+    }
+
+    .main .questionCol {
+        color: #5b666f;
+    }
+
+    .main .correctCol {
+        color: #6a9d21;
+    }
+
+    .main .wrongCol {
+        color: #9d2138;
+    }
+
+    .main .pAboveTable {
+        font-size: 1.4em;
+    }
+/*tr {
+	cursor:pointer;
+}*/
+
+

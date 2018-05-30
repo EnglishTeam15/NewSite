@@ -1,0 +1,108 @@
+
+/*#container {
+    width: 80%;
+}*/
+/*#speak {
+  display: block;
+  width: 90%;
+  margin: 2rem auto 1rem;
+  font-size: 0px;
+}
+
+#words, #speaker {
+  display: inline-block;
+  font-size: 1.1rem;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border: 0;
+  transition: all 300ms ease;
+}
+
+#words {
+  width: 85%;
+  border-radius: 12px 0px 0px 12px;
+  border-right-width: 0;
+  padding-left: 1em;
+  margin: 0;
+  color: #737373;
+  border-left: 0px solid #089fd6;
+}
+#words:focus {
+  outline: 0;
+  border-left: 24px solid #089fd6;
+}
+
+#speaker {
+  width: 15%;
+  border-radius: 0px 12px 12px 0;
+  border-left-width: 0;
+  text-align: center;
+  color: #999;
+  background-color: #ececec;
+}
+#speaker:hover, #speaker:focus {
+  color: #737373;
+  background-color: #dcdcdc;
+}
+
+#voices {
+  display: block;
+  margin: 0 auto 1em;
+      width: 200px;
+}
+
+#spoken {
+  list-style-type: none;
+  display: block;
+  width: 80%;
+  margin: 2rem auto;
+  padding: 0;
+}
+#spoken li {
+  display: block;
+  text-align: right;
+  padding: 0;
+  opacity: 0;
+  transition: all .75s ease-in;
+}
+#spoken li.visible {
+  opacity: 1;
+}
+#spoken button {
+  border: 0;
+  background-color: #ff2;
+  color: #737373;
+  padding: 1em 1em 1em 1em;
+  margin: 20px -10px 10px 0;
+  border-radius: 12px;
+  position: relative;
+  border-left: 0px solid #089fd6;
+  transition: all 300ms ease-out;
+  background-repeat: no-repeat;
+  background-position: 1em center;
+  padding-left: 3em;
+  background-size: 1.5rem;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%0A%3Csvg%0Axmlns%3Adc%3D%22http%3A//purl.org/dc/elements/1.1/%22%0Axmlns%3Acc%3D%22http%3A//web.resource.org/cc/%22%0Axmlns%3Ardf%3D%22http%3A//www.w3.org/1999/02/22-rdf-syntax-ns%23%22%0Axmlns%3Asvg%3D%22http%3A//www.w3.org/2000/svg%22%0Axmlns%3D%22http%3A//www.w3.org/2000/svg%22%0Axml%3Aspace%3D%22preserve%22%0Aversion%3D%221.0%22%0Aid%3D%22layer1%22%0Awidth%3D%2220pt%22%20height%3D%2220pt%22%0AviewBox%3D%220%200%2075%2075%22%3E%3Cmetadata%0Aid%3D%22metadata1%22%3E%3Crdf%3ARDF%3E%3Ccc%3AWork%0Ardf%3Aabout%3D%22%22%3E%3Cdc%3Aformat%3Eimage/svg+xml%3C/dc%3Aformat%3E%3Cdc%3Atype%0Ardf%3Aresource%3D%22http%3A//purl.org/dc/dcmitype/StillImage%22%20/%3E%3C/cc%3AWork%3E%3C/rdf%3ARDF%3E%3C/metadata%3E%3Cg%0Aid%3D%22g1%22%3E%3Cpolygon%0Aid%3D%22polygon1%22%0Apoints%3D%2239.389%2C13.769%2022.235%2C28.606%206%2C28.606%206%2C47.699%2021.989%2C47.699%2039.389%2C62.75%2039.389%2C13.769%22%0Astyle%3D%22stroke%3A%23dcdcdc%3Bstroke-width%3A5%3Bstroke-linejoin%3Around%3Bfill%3A%23ffffff%3B%22%0A/%3E%3Cpath%20id%3D%22path1%22%0Ad%3D%22M%2048.128%2C49.03%20C%2050.057%2C45.934%2051.19%2C42.291%2051.19%2C38.377%20C%2051.19%2C34.399%2050.026%2C30.703%2048.043%2C27.577%22%0Astyle%3D%22fill%3Anone%3Bstroke%3A%23dcdcdc%3Bstroke-width%3A5%3Bstroke-linecap%3Around%22/%3E%0A%3Cpath%20id%3D%22path2%22%0Ad%3D%22M%2055.082%2C20.537%20C%2058.777%2C25.523%2060.966%2C31.694%2060.966%2C38.377%20C%2060.966%2C44.998%2058.815%2C51.115%2055.178%2C56.076%22%0Astyle%3D%22fill%3Anone%3Bstroke%3A%23dcdcdc%3Bstroke-width%3A5%3Bstroke-linecap%3Around%22/%3E%0A%3Cpath%20id%3D%22path1%22%0Ad%3D%22M%2061.71%2C62.611%20C%2066.977%2C55.945%2070.128%2C47.531%2070.128%2C38.378%20C%2070.128%2C29.161%2066.936%2C20.696%2061.609%2C14.01%22%0Astyle%3D%22fill%3Anone%3Bstroke%3A%23dcdcdc%3Bstroke-width%3A5%3Bstroke-linecap%3Around%22/%3E%0A%3C/g%3E%0A%3C/svg%3E");
+}
+#spoken button:focus {
+  outline: 0;
+  border-left: 24px solid #089fd6;
+}
+#spoken button:after {
+  content: '';
+  display: block;
+  position: absolute;
+  right: 1em;
+  bottom: -32px;
+  height: 0px;
+  width: 0px;
+  border-style: solid;
+  border-width: 16px;
+  border-top-color: #ff2;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+}
+#spoken button.speaking {
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%0A%3Csvg%0Axmlns%3Adc%3D%22http%3A//purl.org/dc/elements/1.1/%22%0Axmlns%3Acc%3D%22http%3A//web.resource.org/cc/%22%0Axmlns%3Ardf%3D%22http%3A//www.w3.org/1999/02/22-rdf-syntax-ns%23%22%0Axmlns%3Asvg%3D%22http%3A//www.w3.org/2000/svg%22%0Axmlns%3D%22http%3A//www.w3.org/2000/svg%22%0Axml%3Aspace%3D%22preserve%22%0Aversion%3D%221.0%22%0Aid%3D%22layer1%22%0Awidth%3D%2220pt%22%20height%3D%2220pt%22%0AviewBox%3D%220%200%2075%2075%22%3E%3Cmetadata%0Aid%3D%22metadata1%22%3E%3Crdf%3ARDF%3E%3Ccc%3AWork%0Ardf%3Aabout%3D%22%22%3E%3Cdc%3Aformat%3Eimage/svg+xml%3C/dc%3Aformat%3E%3Cdc%3Atype%0Ardf%3Aresource%3D%22http%3A//purl.org/dc/dcmitype/StillImage%22%20/%3E%3C/cc%3AWork%3E%3C/rdf%3ARDF%3E%3C/metadata%3E%3Cg%0Aid%3D%22g1%22%3E%3Cpolygon%0Aid%3D%22polygon1%22%0Apoints%3D%2239.389%2C13.769%2022.235%2C28.606%206%2C28.606%206%2C47.699%2021.989%2C47.699%2039.389%2C62.75%2039.389%2C13.769%22%0Astyle%3D%22stroke%3A%23737373%3Bstroke-width%3A5%3Bstroke-linejoin%3Around%3Bfill%3A%23737373%3B%22%0A/%3E%3Cpath%20id%3D%22path1%22%0Ad%3D%22M%2048.128%2C49.03%20C%2050.057%2C45.934%2051.19%2C42.291%2051.19%2C38.377%20C%2051.19%2C34.399%2050.026%2C30.703%2048.043%2C27.577%22%0Astyle%3D%22fill%3Anone%3Bstroke%3A%23737373%3Bstroke-width%3A5%3Bstroke-linecap%3Around%22/%3E%0A%3Cpath%20id%3D%22path2%22%0Ad%3D%22M%2055.082%2C20.537%20C%2058.777%2C25.523%2060.966%2C31.694%2060.966%2C38.377%20C%2060.966%2C44.998%2058.815%2C51.115%2055.178%2C56.076%22%0Astyle%3D%22fill%3Anone%3Bstroke%3A%23737373%3Bstroke-width%3A5%3Bstroke-linecap%3Around%22/%3E%0A%3Cpath%20id%3D%22path1%22%0Ad%3D%22M%2061.71%2C62.611%20C%2066.977%2C55.945%2070.128%2C47.531%2070.128%2C38.378%20C%2070.128%2C29.161%2066.936%2C20.696%2061.609%2C14.01%22%0Astyle%3D%22fill%3Anone%3Bstroke%3A%23737373%3Bstroke-width%3A5%3Bstroke-linecap%3Around%22/%3E%0A%3C/g%3E%0A%3C/svg%3E");
+}*/

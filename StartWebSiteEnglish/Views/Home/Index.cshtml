@@ -1,0 +1,189 @@
+﻿@using StartWebSiteEnglish.Models
+
+@{
+    Layout = null;
+ //   RegisterModel register = new RegisterModel();
+ //   LoginModel login = new LoginModel();
+    ViewBag.Title = "Изучение английского языка";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>@ViewBag.Title</title>
+
+    <link href="~/Content/FirstPage/main.css" rel="stylesheet" />
+    <link href="~/Content/FirstPage/registerstyle.css" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="media.css" media="all and (max-width: 900px)">
+    <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+</head>
+
+<body class="landing">
+    <div id="page-wrapper">
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('a[href^="#"]').on("click", "a", function (event) {
+                    event.preventDefault();
+                    var id = $(this).attr('href'),
+                        top = $(id).offset().top;
+                    $('html,body').animate({ scrollTop: top }, 1500);
+                });
+            });
+        </script>
+
+        <header id="header" class="alt">
+            <div id="windowLogin" style="display: none;">
+                <center>
+                    <i class="fas fa-times-circle close" onclick="showLogin('none')"></i>
+                    <div class="row">
+                        <div class="col-md-offset-3 col-md-6">
+                            @Html.Partial("Login")
+                        </div>
+                    </div>
+                </center>
+            </div>
+
+            <h1><a href="#">English</a> by DVYA</h1>
+            <nav id="nav">
+                <ul>
+                    <li><a href="#" onclick="showLogin('block')" class="button" style="font-size: 1.2em;">Войти</a></li>
+                </ul>
+            </nav>
+        </header>
+
+
+        <script type="text/javascript">
+            //Функция показа
+            function show(state) {
+
+                document.getElementById('window').style.display = state;
+                document.getElementById('wrap').style.display = state;
+            }
+
+            function showLogin(state) {
+                document.getElementById('windowLogin').style.display = state;
+                document.getElementById('wrap').style.display = state;
+            }
+
+        </script>
+        <!-- Banner -->
+        <section id="banner">
+            <div style="background: #6420208c; padding:15px;">
+                <h2>English our site</h2>
+                <!-- Header -->
+                <p>WELCOME TO OUR SITE</br>Изучайте английский язык вместе с нами</p>
+                <ul class="actions">
+                    <!-- регестрация -->
+                    <li><a href="#" class="button special" onclick="show('block')">Начать сейчас</a></li>
+                    <li><a href="#main" id="#letmor" class="button">Подробнее о сайте</a></li>
+                </ul>
+            </div>
+            <div id="wrap" style="display: none;"></div>
+            <div id="window" style="display: none;">
+                <center>
+                    <i class="fas fa-times-circle close" onclick="show('none')"></i>
+                    <div class="row">
+
+                        <div class="col-md-offset-3 col-md-6">
+                            @Html.Partial("Register")
+                        </div>
+                    </div>
+                </center>
+            </div>
+        </section>
+        <!-- Main -->
+        <section id="main" class="container">
+            <section class="box special">
+                <header class="major">
+                    <h2>
+                        Предстваляем вашему внимаю новый сайт
+                        <br />
+                        для изучения английского языка с нуля
+                    </h2>
+                    <p>
+                        This free website has helped students worldwide improve English grammar and vocabulary.<br />Набор бесплатных инструментов, чтобы освоить реальные навыки письма и активной грамматики.
+                        Наши упражнения намного эффективнее других, а некоторые - просто уникальны.
+                    </p>
+                </header>
+                <span class="image featured"><img src="../../fonts/education.jpg" alt="" /></span>
+
+            </section>
+
+            <section class="box special features">
+                <div class="features-row">
+                    <section>
+                        <span class="icon major fa-bolt accent2"></span>
+                        <h3>Чтение</h3>
+                        <p>Предствалено большое количесво материалов для чтения разного обьема и сложности.</p>
+                    </section>
+                    <section>
+                        <span class="icon major fa-area-chart accent3"></span>
+                        <h3>Грамматика</h3>
+                        <p>Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.</p>
+                    </section>
+                </div>
+                <div class="features-row">
+                    <section>
+                        <span class="icon major fa-cloud accent4"></span>
+                        <h3>Выполняй упражнения</h3>
+                        <p>Интерактивные тренировки, основанные на проверенных методиках, помогут тебе освоить грамматику, чтение, понимание на слух, расширить словарный запас.</p>
+                    </section>
+                    <section>
+                        <span class="icon major fa-bolt accent5"></span>
+                        <h3>Следи за прогрессом</h3>
+                        <p>
+                            Измеримый прогресс - лучший мотиватор. Lingualeo отслеживает твои качественные и количественные успехи в режиме реального времени.
+                            Держи руку на пульсе: следи за результатом!.
+                        </p>
+                    </section>
+                </div>
+            </section>
+        </section>
+        <!-- CTA -->
+        <section id="cta">
+            <h2>Sign up for beta access</h2>
+            <p>Blandit varius ut praesent nascetur eu penatibus nisi risus faucibus nunc.</p>
+            <form>
+                <div class="row uniform 50%">
+                    <div class="8u 12u(mobilep)">
+                        <input type="email" name="email" id="email" placeholder="Email Address" />
+                    </div>
+                    <div class="4u 12u(mobilep)">
+                        <input type="submit" value="Sign Up" class="fit" />
+                    </div>
+                </div>
+            </form>
+        </section>
+        <!-- Footer -->
+        <footer id="footer">
+            <ul class="icons">
+                <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                <li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
+                <li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+                <li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
+            </ul>
+            <ul class="copyright">
+                <li>&copy; Untitled. All rights reserved.</li>
+            </ul>
+        </footer>
+    </div>
+
+
+    <script src="~/Scripts/js/jquery.min.js"></script>
+    <script src="~/Scripts/js/jquery.dropotron.min.js"></script>
+    <script src="~/Scripts/js/jquery.scrollgress.min.js"></script>
+    <script src="~/Scripts/js/skel.min.js"></script>
+    <script src="~/Scripts/js/util.js"></script>
+    <script src="~/Scripts/js/main.js"></script>
+
+</body>
+</html>

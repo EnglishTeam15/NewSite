@@ -1,0 +1,41 @@
+﻿@using StartWebSiteEnglish.Models
+@using StartWebSiteEnglish.HtmlHelpers
+@model  MaterialViewModel<GrammerText>
+@{
+    ViewBag.Title = "Грамматика";
+    Layout = "~/Views/Shared/_Main.cshtml";
+
+}
+@section Links{
+    <link href="~/Content/Grammer/stylegrammer.css" rel="stylesheet" />
+    <link href="~/Content/Grammer/test.css" rel="stylesheet" />
+}
+
+@section Body{
+    <div style="display: inline-flex;">
+        <h2 style="margin-right: 50px;">Изучаем грамматику</h2>
+        <a href="/Admin/AddGrammer">Добавить урок</a>
+    </div>
+    <div>
+        <div>
+            <p style="text-align: left; width: 80%; ">
+                Cправочник грамматики английского языка с подробным изложением особенностей употребления частей речи, а также построения английских предложений.
+            </p>
+            <ul class="push">
+                <li><a href="/Main/FirstTest" class="button">Пройти тест на определение уровня</a></li>
+                @foreach (StartWebSiteEnglish.Models.GrammerText x in Model.Materials)
+                {
+                    <li><a href="/Main/LearnGrammer/@x.Id">@x.Name</a></li>
+                }
+            </ul>
+        </div>
+        <div class="btn-group">
+            @if (Model.pageInfo.TotalPages > 1)
+            {
+                  @Html.PageLinks(Model.pageInfo, x => Url.Action("Grammer", new { page = x }))
+            }
+        </div>
+    </div>
+}
+
+

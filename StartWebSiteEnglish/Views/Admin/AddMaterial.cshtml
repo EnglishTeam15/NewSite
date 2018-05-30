@@ -1,0 +1,40 @@
+﻿@model StartWebSiteEnglish.Models.MaterialText
+
+@{
+    ViewBag.Title = "Добавить текст";
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+
+@section Body{
+
+    <div>@ViewBag.ResultAdd</div>
+
+
+    @using (Html.BeginForm("AddMaterial", "Admin", FormMethod.Post))
+    {
+        <div>
+            <div>Name text</div>
+            @Html.EditorFor(u => u.Name)
+        </div>
+        <div>
+            <div>Name text translate</div>
+            @Html.EditorFor(u => u.NameTranslate)
+        </div>
+        <div>
+            <div>Text</div>
+            <div style="width: 60%;">@Html.TextAreaFor(u => u.Text, 10, 45, "text")</div>
+        </div>
+        <div>
+            <div>Translate</div>
+            <div style="width: 60%;">@Html.TextAreaFor(u => u.Translate, 10, 45, "translate")</div>
+        </div>
+        <div>
+            <div>Ratting</div>
+            @Html.EditorFor(u => u.Complexity)
+        </div>
+        <input type="submit" value="Add" name="Add" />
+        <input type="submit" value="Cancel" name="Cancel" />
+    }
+
+}
+

@@ -1,0 +1,80 @@
+﻿@using StartWebSiteEnglish.Models
+@*@model List<StartWebSiteEnglish.Models.Words>*@
+@model List<StartWebSiteEnglish.Models.CheckBoxWord>
+
+@{
+    ViewBag.Title = "ChooseWordForTraing";
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+
+@section Links{
+    <link href="~/Content/Main/materialssyle.css" rel="stylesheet" />
+}
+
+@section Body{
+    <style>
+        img {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px;
+            width: 80px;
+        }
+    </style>
+
+    <div style="display: block; height: 100%;">
+        <div class="header-main material">
+            <h2 class="name">Наборы слов</h2>
+        </div>
+
+        <div class="reading-table" style="background: #fff; padding: 15px;">
+          
+               @using (Html.BeginForm("ChooseWordForTraing", "Main", FormMethod.Post))
+               {
+                   @*<a class="btn btn-success" href="/Main/Traning">Изучить</a>*@
+                <input type="submit" class="btn btn-success" value="Изучить"/>
+                <table class="table-material">
+                    <tr class="head-table">
+                        @*<th width="10px;">Id</th>*@
+                        <td width="20px" style="text-align: left">Выбрать</td>
+                        <th width="30%" style="text-align: left">Слово</th>
+                        <th width="30%;" style="text-align: left">Перевод</th>
+                        <th width="60px;">Изображение</th>
+                    </tr>
+                    @foreach (var x in Model)
+                    {
+                        <tr>
+                            @*<td>
+                                <input type="checkbox" name="idselect" value="@x.IdWord" id="@x.IdWord" />
+                                <label for="@x.IdWord">@x.Word</label>
+                                <label for="@x.IdWord">@x.Translation</label>
+                                <label for="@x.IdWord">@x.PictureUrl</label>
+                            </td>*@
+                            <td>@Html.CheckBoxFor(m=>x.Check)
+                                @Html.HiddenFor(m => x.IdWord)
+                                @Html.HiddenFor(m => x.Word)
+                                @Html.HiddenFor(m => x.Translation)
+                                @Html.HiddenFor(m => x.PictureUrl)
+                            </td>
+                            <td width="30%" style="text-align: left">@x.Word</td>
+                            <td width="30%;" style="text-align: left">@x.Translation</td>
+                            <td width="60px;">
+                                @if (x.PictureUrl == "" || x.PictureUrl == null)
+                                {
+                                     <img src="~/fonts/none-image.gif" alt="Paris" style="width:80px">
+                                }
+                                else
+                                {
+                                      <img src="@x.PictureUrl" alt="Paris" style="width:80px">
+                                }
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+                 @*@Html.ActionLink("Изучить", "Traning", new { @class = "btn btn-success" })*@
+               }
+        </div>
+    </div>
+}
+
+

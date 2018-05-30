@@ -1,0 +1,79 @@
+﻿@using StartWebSiteEnglish.Models
+@using StartWebSiteEnglish.HtmlHelpers
+@model  MaterialViewModel<MaterialText>
+@{
+
+    ViewBag.Title = "Материалы";
+    Layout = "~/Views/Shared/_Main.cshtml";
+    //User u = Session["User"] as User;
+}
+
+@section Links{
+    <link href="~/Content/Main/materialssyle.css" rel="stylesheet" />
+    <link href="~/Content/Main/search.css" rel="stylesheet" />
+}
+
+@section Body{
+    <div style="display: block; height: 100%;">
+        <div class="header-main material">
+            <h2 class="name">Материалы</h2>
+            @using (Html.BeginForm())
+            {
+                <div class="text-search-container ovh p-rel" data-quest-help-container="block-d-0-11" style="width: 85%; margin:0 0 -20px 0;">
+                    <p>
+                        <div class="input text" style="display: flex;">
+                            <input class="placeholder-light" name="SearchString" type="text" placeholder="Ищите тексты..." data-text-search="">
+                            <button type="submit" style="width: 50px; height: 37px;">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </p>
+                </div>
+            }
+
+            @*@if (@u.RoleId == 1)*@
+            <a href="/Admin/AddMaterial">Добавить тескт</a>
+        </div>
+
+        <div class="reading-table">
+            <table class="table table-hover" id="bootstrap-table">
+                <thead>
+                    <tr>
+                        <th><p style="margin-bottom: 8px;">Результаты поиска<br /><h6>Найдено @ViewBag.CountText</h6></p></th>
+                        <th>Объем@*@Html.ActionLink("Объем", "Material", new { sortOrder = ViewBag.VolumeSortParm })*@</th>
+                        <th>@Html.ActionLink("Уровень", "Material", new { sortOrder = ViewBag.LevelSortParm })</th>
+                        <th>@Html.ActionLink("Дата обновлениия", "Material", new { sortOrder = ViewBag.DateSortParm })</th>
+                    </tr>
+                </thead>
+                @foreach (MaterialText x in Model.Materials)
+                {
+                    <tr class="body">
+                        <td class="name-text"><a href="/Main/TextReading/@x.Id">@x.Name</a></td>
+                        <td>@x.GetCountPage() стр</td>
+                        <td>@x.Complexity</td>
+                        <td>@x.Date.ToShortDateString()</td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <div class="btn-group">
+            @if (Model.pageInfo.TotalPages >1)
+            {
+                @Html.PageLinks(Model.pageInfo, x => Url.Action("Material", new { page = x }))
+            }
+        </div>
+        @*@if (ViewData["Textresult"] != null)
+            {
+                <div id="parent_popup">
+                    <div id="popup">
+                        <p style="background:#000; color:#fff;" id="elem">@ViewData["DeleteText"]</p>.
+                        @*<a class="close" title="Закрыть" onclick="document.getElementById('parent_popup').style.display='none';">X</a>*@
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#bootstrap-table').bdt();
+        });
+    </script>
+}
+
+
