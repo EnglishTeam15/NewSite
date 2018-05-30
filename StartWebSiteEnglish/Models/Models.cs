@@ -81,7 +81,7 @@ namespace StartWebSiteEnglish.Models
 
         [Required(ErrorMessage = "Подтвердите пароль")]
         [DataType(DataType.Password)]
-        [Compare("Password", ErrorMessage = "Пароли не совпадают")]
+        //[Compare("Password", ErrorMessage = "Пароли не совпадают")]
         public string ConfirmPassword { get; set; }
 
     }

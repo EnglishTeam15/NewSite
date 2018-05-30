@@ -73,6 +73,11 @@ namespace StartWebSiteEnglish.Controlers
                     DateRegistration = DateTime.Now,
                     PhotoUrl = "https://zalatina.myhappyco.com/images/img-profile.png"
                 };
+                if(model.Password != model.ConfirmPassword)
+                {
+                    ViewBag.RegisterError = true;
+                    ModelState.AddModelError("", "Неверно подтверждён пароль");
+                }
                 //добавление пользователя
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -107,6 +112,7 @@ namespace StartWebSiteEnglish.Controlers
                     foreach (string error in result.Errors)
                     {
                         ModelState.AddModelError("", error);
+                        ViewBag.RegisterError = true;
                     }
                     return View("Index");
                 }
@@ -174,15 +180,17 @@ namespace StartWebSiteEnglish.Controlers
                     }
                     else
                     {
+                        ViewBag.LoginError = true;
                         ModelState.AddModelError("", "Не подтвержден email.");
                     }
                 }
                 else
                 {
+                    ViewBag.LoginError = true;
                     ModelState.AddModelError("", "Неверный логин или пароль");
                 }
             }
-            return Redirect("Index");
+            return View("Index");
         }
 
         [HttpPost]

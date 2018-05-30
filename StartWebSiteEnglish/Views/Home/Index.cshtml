@@ -24,10 +24,20 @@
 
 </head>
 
+@if (ViewBag.LoginError != null)
+{
+    <body body onload="showLogin('block');">
+    </body>
+}
+
+@if (ViewBag.RegisterError != null)
+{
+    <body body onload="show('block');">
+    </body>
+}
+
 <body class="landing">
     <div id="page-wrapper">
-
-
 
         <header id="header" class="alt">
             <div id="windowLogin" style="display: none;">
@@ -53,7 +63,6 @@
         <script type="text/javascript">
             //Функция показа
             function show(state) {
-
                 document.getElementById('window').style.display = state;
                 document.getElementById('wrap').style.display = state;
             }
@@ -61,6 +70,7 @@
             function showLogin(state) {
                 document.getElementById('windowLogin').style.display = state;
                 document.getElementById('wrap').style.display = state;
+                
             }
 
         </script>
@@ -76,6 +86,7 @@
                     <li><a href="#main" id="#letmor" class="button">Подробнее о сайте</a></li>
                 </ul>
             </div>
+
             <div id="wrap" style="display: none;"></div>
             <div id="window" style="display: none;">
                 <center>
