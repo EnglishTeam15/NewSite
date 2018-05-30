@@ -12,22 +12,22 @@
         <span class="heading">Регистрация на сайте</span>
        <p style="font-size: 0.9em;"> @Html.ValidationSummary(true)</p>
         <div class="form-group">
-            <input type="text" class="form-control" name="UserName" placeholder="Ваше имя">
+            <input type="text" class="form-control" name="UserName" placeholder="Ваше имя" required>
             <i class="fa fa-user"></i>
             <span class="error-right"> @Html.ValidationMessageFor(model => Model.UserName) </span>
         </div>
         <div class="form-group">
-            <input type="email" class="form-control" name="Email" placeholder="E-mail адрес">
+            <input type="email" class="form-control" name="Email" placeholder="E-mail адрес" required>
             <i class="fa fa-user"></i>
             <span class="error-right"> @Html.ValidationMessageFor(model => Model.Email) </span>
         </div>
         <div class="form-group help">
-            <input type="password" class="form-control" name="Password" placeholder="Пароль">
+            <input type="password" class="form-control" name="Password" placeholder="Пароль" required>
             <i class="fa fa-lock"></i>
             <span class="error-right"> @Html.ValidationMessageFor(model => Model.Password) </span>
         </div>
         <div class="form-group help">
-            <input type="password" class="form-control" name="ConfirmPassword" placeholder="Повтор пароля">
+            <input type="password" class="form-control" name="ConfirmPassword" placeholder="Повтор пароля" required>
             <i class="fa fa-lock"></i>
             <span class="error-right">@Html.ValidationMessageFor(model => Model.ConfirmPassword)</span>
         </div>

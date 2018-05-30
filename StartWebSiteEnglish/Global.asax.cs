@@ -13,8 +13,6 @@ namespace StartWebSiteEnglish
     {
         protected void Application_Start()
         {
-            //Database.SetInitializer<ApplicationContext>(new AppDbInitializer());
-
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }

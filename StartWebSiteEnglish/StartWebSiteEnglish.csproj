@@ -259,6 +259,7 @@
     <Compile Include="Controlers\HomeController.cs" />
     <Compile Include="Controlers\MainController.cs" />
     <Compile Include="Controlers\RoleController.cs" />
+    <Compile Include="Controlers\RolesController.cs" />
     <Compile Include="Controlers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -269,6 +270,7 @@
     <Compile Include="Models\MaterialContext.cs" />
     <Compile Include="Models\Models.cs" />
     <Compile Include="Models\PageInfo.cs" />
+    <Compile Include="Models\RoleModel.cs" />
     <Compile Include="Models\SqlQueries.cs" />
     <Compile Include="Models\TestModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -313,6 +315,9 @@
     <Content Include="Views\Main\ChoiceWord.cshtml" />
     <Content Include="Views\Home\ResultRegister.cshtml" />
     <Content Include="Views\Admin\AddTestForMaterial.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\Roles\Create.cshtml" />
+    <Content Include="Views\Roles\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

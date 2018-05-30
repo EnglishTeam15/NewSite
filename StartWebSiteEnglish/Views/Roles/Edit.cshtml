@@ -1,0 +1,22 @@
+﻿@model StartWebSiteEnglish.Models.EditRoleModel
+@{
+    ViewBag.Title = "Редактирование";
+}
+
+    <h2>Редактирование роли</h2>
+
+    @using (Html.BeginForm(Html.BeginForm(new { @class = "contact_form" })))
+    {
+        @Html.AntiForgeryToken()
+
+        <div>
+            @Html.ValidationSummary(true, "")
+            @Html.HiddenFor(model => model.Id)
+            <input type="text" name="Name" placeholder="Название роли">
+            <br />
+            <input type="text" name="Description" placeholder="Описание роли">
+            @*<p>Название:  @Html.EditorFor(model => model.Name)</p>
+                <p>Описание: @Html.EditorFor(model => model.Description)</p>*@
+            <p><input type="submit" value="Изменить" /></p>
+        </div>
+    }

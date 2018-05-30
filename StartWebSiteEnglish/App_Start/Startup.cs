@@ -17,10 +17,15 @@ namespace StartWebSiteEnglish
         {
             app.CreatePerOwinContext<ApplicationContext>(ApplicationContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
+
+            // регистрация менеджера ролей
+
+            app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
+
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Home/Index"),
+                LoginPath = new PathString("/Home/Login"),
             });
         }
     }

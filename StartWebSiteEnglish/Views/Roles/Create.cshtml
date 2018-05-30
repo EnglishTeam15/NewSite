@@ -1,0 +1,21 @@
+﻿@model StartWebSiteEnglish.Models.CreateRoleModel
+@{
+    ViewBag.Title = "Добавление";
+}
+
+    <h2>Добавление роли</h2>
+
+    @using (Html.BeginForm(new { @class = "contact_form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div style="display: table;">
+            @Html.ValidationSummary(true, "")
+            <input type="text" name="Name" placeholder="Название роли">
+            <br />
+            <input type="text" name="Description" placeholder="Описание роли">
+            @*<p>Название:  @Html.EditorFor(model => model.Name)</p>
+                <p>Описание: @Html.EditorFor(model => model.Description)</p>*@
+            <p><input type="submit" value="Добавить" /></p>
+        </div>
+    }
