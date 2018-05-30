@@ -1,4 +1,4 @@
-html {
+п»їhtml {
     position: relative;
     min-height: 100%;
     height: auto !important;
@@ -16,7 +16,7 @@ body {
 center {
     display: block;
     height: 100%;
-    background: #7aa2a941;
+    /*background: #7aa2a941;*/
     position: relative;
     width: 100%;
     /*margin-top: 48px;*/
@@ -40,49 +40,52 @@ center {
     height: 100%;
     display: flex;
 }
-left-menu{
-	display: block;
-	width: 20%;
-	height: 100%;
-	background: #1BA;
-	float: left;
-    font-size: 1.1em;
-    left:0;
-    top:0;
 
+left-menu {
+    display: block;
+    width: 20%;
+    height: 100%;
+    background: #1BA;
+    float: left;
+    font-size: 1.1em;
+    left: 0;
+    top: 0;
 }
 /*footer*/
 footer {
     position: initial;
     bottom: 0;
     left: 0;
-    bottom: 0; /* Левый нижний угол */
-    color: #fff; /* Цвет текста */
-    width: 100%; /* Ширина слоя */
+    bottom: 0; /* Р›РµРІС‹Р№ РЅРёР¶РЅРёР№ СѓРіРѕР» */
+    color: #fff; /* Р¦РІРµС‚ С‚РµРєСЃС‚Р° */
+    width: 100%; /* РЁРёСЂРёРЅР° СЃР»РѕСЏ */
     background: #1a242e;
     text-align: center;
     height: 100%;
 }
 
     footer div {
-        padding: 10px; /* Поля вокруг текста */
-        background: #39b54a; /* Цвет фона */
+        padding: 10px; /* РџРѕР»СЏ РІРѕРєСЂСѓРі С‚РµРєСЃС‚Р° */
+        background: #39b54a; /* Р¦РІРµС‚ С„РѕРЅР° */
     }
 
-.account .horizontal-info{
-	display: flex;
-	padding-top: 20px;
+.account .horizontal-info {
+    display: flex;
+    padding-top: 20px;
 }
-.account .vertical-info{
-	display: block;
-	padding-top: 20px;
+
+.account .vertical-info {
+    display: block;
+    padding-top: 20px;
 }
-.left_menu .menu_function{
-	display: block;
-	color: #fff;
-	width: 100%;
-	padding-top:10px;
+
+.left_menu .menu_function {
+    display: block;
+    color: #fff;
+    width: 100%;
+    padding-top: 10px;
 }
+
     .left_menu .menu_function .left-link {
         text-decoration: none !important;
         background: #fff;
@@ -93,10 +96,12 @@ footer {
         color: #111;
         margin-bottom: 15px;
     }
-    .left_menu .menu_function a:hover{
-        text-decoration:none;
+
+    .left_menu .menu_function a:hover {
+        text-decoration: none;
     }
-.menu_function .item a:hover{
+
+.menu_function .item a:hover {
     background: #9ed3cd;
 }
 
@@ -108,127 +113,35 @@ footer {
     /*background-image: url('../../fonts/main.jpg');*/
     /*background-repeat: no-repeat;*/
 }
+
+
+
+
 photo {
     font-size: 90px;
     color: #555;
 }
+
 .fa-user {
     font-size: 90px;
     color: #555;
-    
 }
-.account-photo a:hover{
+
+.account-photo a:hover {
     background: #fe3b3b;
 }
-.left_menu .account.account-name{
-	position: relative;
-	display: flex;
-	padding: 0;
-	align-items: center;
-	margin-left: 10px;
-	justify-content: content;
-	width: 80px;
-}
-.matetials_item{
-	border-bottom: 1px solid #fff;
-	margin-bottom: 15PX;
-}
-.account .vertical-infot .progress-title {
-    font-size: 15px;
-    font-weight: 400;
-    color: #333;
-    text-transform: uppercase;
-    margin: 0 0 25px;
-}
-.account .vertical-info .progress {
-    height: 10px;
-    background: #e9e9ea;
-    border-radius: 15px;
-    margin-bottom: 30px;
-    overflow: visible;
+
+.left_menu .account.account-name {
     position: relative;
-}
-    .account .vertical-info .progress:before,
-    .account .vertical-info .progress:after {
-        content: "";
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background: #fff;
-        position: absolute;
-        top: -5px;
-        left: 0;
-        z-index: 1;
-    }
-    .account .vertical-info .progress:after {
-        border: 7px solid #e9e9ea;
-        left: auto;
-         /*right: 0;*/
-    }
-    .account .vertical-info .progress .progress-bar {
-        box-shadow: none;
-        border: none;
-        border-radius: 15px;
-        position: relative;
-        -webkit-animation: animate-positive 1s;
-        animation: animate-positive 1s;
-    }
-    .account .vertical-info .progress .progress-value {
-        width: 70px;
-        height: 35px;
-        line-height: 25px;
-        border-radius: 20px;
-        background: #fff;
-        font-size: 12px;
-        font-weight: 400;
-        position: absolute;
-        top: -12px;
-        /*right: 0;*/
-        z-index: 2;
-    }
-.account .vertical-info progress.orange:before {
-    border: 7px solid #fe3b3b;
-}
-.account .vertical-info .progress.blue:before {
-    border: 7px solid #1a4966;
-}
-.account .vertical-info .progress.green:before {
-    border: 7px solid #53aa2c;
-}
-.account .vertical-info .progress.purple:before {
-    border: 7px solid #66406f;
-}
-.account .vertical-info .progress.orange .progress-value {
-    border: 5px solid #fe3b3b;
-    color: #fe3b3b;
-}
-.account .vertical-info .progress.blue .progress-value {
-    border: 5px solid #1a4966;
-    color: #1a4966;
-}
-.account .vertical-info .progress.green .progress-value {
-    border: 5px solid #53aa2c;
-    color: #53aa2c;
-}
-.account .vertical-info .progress.purple .progress-value {
-    border: 5px solid #66406f;
-    color: #66406f;
+    display: flex;
+    padding: 0;
+    align-items: center;
+    margin-left: 10px;
+    width: 80px;
 }
 
-
-
-@-webkit-keyframes animate-positive{
-    0%{ width: 0; }
+.matetials_item {
+    border-bottom: 1px solid #fff;
+    margin-bottom: 15PX;
 }
-@keyframes animate-positive{
-    0%{ width: 0; }
-}
-
-@media screen and (max-width: 900px) {
-    left-menu{
-        width: 150px;
-    }
-}
-
-
 

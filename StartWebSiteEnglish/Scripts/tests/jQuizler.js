@@ -6,6 +6,8 @@
             if (questions == null)
                 throw 'No questions was provided.';
 
+
+            
             var reviewQuiz = false;
 
            // var percentage = 0;
@@ -13,6 +15,8 @@
           //  var percentPiece = 100 / questions.length;
 
             var rightAnswers = 0;
+
+           
 
             $(this).html("<div class=\"intro\">" + $(this).html() + "</div>");
 

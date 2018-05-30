@@ -33,8 +33,6 @@
         ViewData["UserInfo"] = true;
     }
     <div id="header" class="alt">
-
-
         <header>
             <h1><a href="/Main/Main" style="text-decoration: none;">English</a> by DVYA</h1>
             <nav id="nav">
@@ -42,6 +40,10 @@
             </nav>
         </header>
     </div>
+
+    <script>
+        $(".progress-bar-striped").css("width",@user.LevelProgress+%);
+    </script>
     <div style="display:block;">
         <div style="display:block;">
             <center style=" min-height: 100vh; background-repeat: no-repeat;">
@@ -53,9 +55,6 @@
                                 {
                                     <div class="horizontal-info">
                                         <div class="account account-photo">
-                                            @*<photo>
-
-                                                </photo>*@
                                             <a href="/User/UserPage" style="animation: none;">
                                                 @*<i class="fas fa-user"></i>*@
                                                 <img src="@user.PhotoUrl" height="150" />
@@ -64,12 +63,11 @@
                                         <div class="account account-name">@user.UserName</div>
                                     </div>
                                     <div class="vertical-info">
-                                        <div class="level" style="font-size: 15px; margin-bottom: 20px;">Уровень анлгийского языка: A @user.LevelProgress</div>
-                                        <div class="progress orange">
-                                            <div class="progress-bar" style="width:@user.LevelProgress; background:#fe3b3b;">
-                                                <div class="progress-value">@user.LevelProgress</div>
-                                            </div>
-                                        </div>
+                                        <div class="level" style="font-size: 15px; margin-bottom: 20px;">Уровень анлгийского языка: A @user.Сomplexity</div>
+                                        @*<div class="progress">
+                                            <div class="progress-bar progress-bar-striped bg-info" role="progressbar"  aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>*@
+                                        <div style="text-align:left; margin-left: 20px;">Очки: @user.LevelProgress</div>
                                         <div class="vocabulary" style="font-size: 15px; margin-bottom: 20px;">Словарный запас: 0</div>
 
                                     </div>
@@ -93,7 +91,7 @@
             </center>
         </div>
         <footer>
-            <p style="padding-top: 15px;">© 2018<a style="color:#0a93a6; text-decoration:none;" href="#"> BootSnipp And TomGeek76</a>, All rights reserved 2016-2017.</p>
+            <p style="padding-top: 15px;">© 2018</p>
         </footer>
     </div>
 

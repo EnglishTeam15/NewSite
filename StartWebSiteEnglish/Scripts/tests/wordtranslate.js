@@ -16,7 +16,7 @@ Array.prototype.rand = function () {
     return this.sort(function () { return 0.5 - Math.random(); });
 }
 var quizQuestions = [];
-var currentidword = [];
+var id = [];
 var dates = document.getElementById("datewords").innerText;
 var questions = JSON.parse(dates);
 for (var i = 0; i < questions.length; i++) {
@@ -187,45 +187,30 @@ function cleanUpTheLayout() {
     console.log("clean UPP!!");
 }
 
-$(".finalize").click(function () {
-             $.ajax({
-            type: 'POST',
-            url: '/Main/WordTranslate',
-                 data: { id: currentidword },
-            datatupe: 'json',
-            success: function (response) {
-                console.log(response);
-            },
-            error: function (response) {
-                console.log("Error");
-            }
-    });
-    //$('#finishTraing').css('display', 'block');
-    });
-
 function finalize() {
-    //function() {
-    //    $.ajax({
-    //        type: 'POST',
-    //        url: '/Main/WordTranslate',
-    //        data: { currentidword },
-    //        success: function (response) {
-    //            console.log(response);
-    //        },
-    //        error: function (response) {
-    //            console.log(response);
-    //        }
-    //    });
-    //};
-   
-
+    $.ajax({
+        type: 'POST',
+        url: '/Main/WordTranslate',
+        data: { id: currentidword },
+        datatupe: 'json',
+        success: function (response) {
+            console.log(response);
+        },
+        error: function (response) {
+            console.log("Error");
+        }
+    });
     //var request = new XMLHttpRequest();
-    //var body = urrentidword;
-    //request.open("POST", "/Main/WordTranslate");
+    //request.open("POST", "/Main/WordTranslate", true);
     //request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    //request.onreadystatechange = reqReadyStateChange;
-    //request.send(body);
-
+    //request.send(id);
+    //var status = request.status;
+    //if (status == 200)
+    //    console.log("Текст ответа: " + request.responseText)
+    //else if (status == 404)
+    //    console.log("Ресурс не найден")
+    //else
+    //    console.log(request.statusText)
 
     cleanUpTheLayout();
 
@@ -236,7 +221,6 @@ function finalize() {
     tHeader.setAttribute("class", "pAboveTable");
     mainDiv.appendChild(tHeader);
     var table = document.createElement("table");
-    // table.border='1px';
     var tr = document.createElement("tr");
     table.appendChild(tr);
     var heading = ["Вопросы", "Ваши результаты", "Правильные варианты"];
@@ -280,25 +264,12 @@ function finalize() {
       
     }
     
-
     mainDiv.appendChild(table);
     var trAll = document.getElementsByTagName("tr");
     console.log(trAll);
 
-    //for (var i = 1; i < trAll.length; i++) {
-    //    trAll[i].onclick = returnToQuestion;
-    //    console.log("Assigned!");
-    //}
-    //document.getElementById('finishTraing').style.display = "block";
-
-    // var head2 = document.createElement("th");
-    // head2.appendChild(document.createTextNode("Your Result"));
-    // tr.appendChild(head2);
-    // document.body.appendChild(table);
-
     
 }
-//dynamicaally creates the question layout when clicked on any of the questions in the result table
 function createQuestionLayout() {
     var mainDiv = document.getElementsByClassName('main')[0];
     var wrapperDiv = document.createElement('div');
@@ -359,9 +330,6 @@ function returnToQuestion() {
         }
     }
 }
-/*
-the number of action taken when any of the ul items is clicked on:
-getting the number of question and show the current question
-*/
+
 
 

@@ -1,14 +1,11 @@
 ﻿@using StartWebSiteEnglish.Models
-@{
-    ApplicationUser user = (ApplicationUser)Session["User"];
-}
 
 @{
     Layout = "~/Views/Shared/_Main.cshtml";
     ViewBag.Title = "Профиль";
     @section UserInfo{
     }
-
+    ApplicationUser user = (ApplicationUser)Session["User"];
     //User user = Session["User"] as User;
 
 }
@@ -57,8 +54,8 @@
                     @*<p><strong>Email </strong> @Model.Email </p>*@
                     <p><strong>Email </strong> @user.Email </p>
                     <p><strong>Уровень </strong> A @user.Сomplexity </p>
-                    <div class="progress orange" style="width: @user.LevelProgress; margin-top:50px;">
-                        <div class="progress-bar" style="width: @user.LevelProgress; background:#fe3b3b;">
+                    <div class="progress orange" style=" width: 250px; margin-top:50px;">
+                        <div class="progress-bar" style="background:#fe3b3b; width:@user.LevelProgress; ">
                             <div class="progress-value"> @user.LevelProgress </div>
                         </div>
                     </div>
@@ -106,7 +103,7 @@
 
 
             </div>
-            <div class="col-xs-12 divider text-center">
+            @*<div class="col-xs-12 divider text-center">
                 <div class="col-xs-12 col-sm-4 emphasis">
                     <h2><strong>0</strong></h2>
                     <p><small>Слов выучено</small></p>
@@ -125,7 +122,7 @@
                     <h2><strong>0</strong></h2>
                     <p><small>Словарный запас</small></p>
                 </div>
-            </div>
+            </div>*@
         </div>
 
     </div>

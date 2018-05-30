@@ -22,36 +22,39 @@
 
 @section Body{
 
+    <style>
+        .hr{
+            background-color: #111;
+        }
+    </style>
+
     @using (Html.BeginForm("EditUserName", "User", FormMethod.Post, new { @class = "contact_form" }))
     {
-        <li>
-            <div style="display: table;">
+            <div style="display: table; margin-top:50px;">
                 <input type="text" name="newUserName" placeholder="Введите новый логин"> <br />
                 <button class="submit" type="submit" style="margin: 0 auto;">Сохранить логин </button>
             </div>
-        </li>
+            <hr class="hr"/>
     }
 
     @using (Html.BeginForm("EditEmail", "User", FormMethod.Post, new { @class = "contact_form" }))
     {
-        <li>
             <div style="display: table;">
                 <input type="email" name="newEmail" placeholder="Введите новый Email"><br />
                 <button class="submit" type="submit" style="margin: 0 auto;">Сохранить Email</button>
             </div>
-        </li>
+            <hr/>
+
     }
 
     @using (Html.BeginForm("EditPassword", "User", FormMethod.Post, new { @class = "contact_form" }))
     {
-        <li>
             <div style="display: table;">
                 <input type="password" name="Password" placeholder="Старый пароль"><br />
                 <input type="password" name="NewPassword" placeholder="Новый пароль"><br />
                 <input type="password" name="ConfirmNewPassword" placeholder="Повтор нового пароль"><br />
                 <button class="submit" type="submit" style="margin: 0 auto;">Сохранить пароль</button>
             </div>
-        </li>
+            <hr/>
     }
-}
 }

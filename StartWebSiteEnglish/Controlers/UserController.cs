@@ -88,7 +88,7 @@ namespace StartWebSiteEnglish.Controlers
                     ModelState.AddModelError(string.Empty, "Пользователь не найден");
                 }
             }
-            return View(model);
+            return View();
         }
 
         [HttpPost]

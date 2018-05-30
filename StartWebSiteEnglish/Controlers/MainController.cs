@@ -142,6 +142,7 @@ namespace StartWebSiteEnglish.Controlers
         {
             using (MaterialContext db = new MaterialContext())
             {
+                int count = 0;
                 List<AnswerMV> finalResultQuiz = new List<AnswerMV>();
                 foreach (AnswerMV answser in resultQuiz)
                 {
@@ -154,7 +155,11 @@ namespace StartWebSiteEnglish.Controlers
                     }).FirstOrDefault();
 
                     finalResultQuiz.Add(result);
+                    if (result.isCorrect)
+                        count++;
                 }
+                ApplicationUser user = Session["User"] as ApplicationUser;
+                user.LevelProgress += count;
                 return Json(new { result = finalResultQuiz }, JsonRequestBehavior.AllowGet);
             }
         }
@@ -242,6 +247,8 @@ namespace StartWebSiteEnglish.Controlers
                     
                 //}
             }
+            ApplicationUser user = Session["User"] as ApplicationUser;
+            user.LevelProgress += 10 * id.Length / 10;
 
 
             return Json(new { response ="Sucsses"  }, JsonRequestBehavior.AllowGet);
@@ -367,7 +374,7 @@ namespace StartWebSiteEnglish.Controlers
             else
                 level = 3;
             ApplicationUser user = Session["User"] as ApplicationUser;
-            user.LevelProgress = level;
+            user.Сomplexity = level;
             ViewBag.YourLevel = string.Format("Ваш уровень знания языка " + level.ToString());
             return Json( ViewBag.YourLevel);
 
@@ -438,6 +445,7 @@ namespace StartWebSiteEnglish.Controlers
                 var x = db.Words.FirstOrDefault(s => s.Id == a);
                 words.Add(x);
             }
+            
             Session["WordQuestions"] = words;
             return Json(new { success = id });
         }
