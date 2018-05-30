@@ -369,7 +369,7 @@ namespace StartWebSiteEnglish.Controlers
             ApplicationUser user = Session["User"] as ApplicationUser;
             user.LevelProgress = level;
             ViewBag.YourLevel = string.Format("Ваш уровень знания языка " + level.ToString());
-            return Json(new { result = ViewBag.YourLevel });
+            return Json( ViewBag.YourLevel);
 
         }
 

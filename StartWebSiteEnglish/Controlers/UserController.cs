@@ -34,7 +34,7 @@ namespace StartWebSiteEnglish.Controlers
         }
 
 
-        //[Authorize]
+        [Authorize]
         public ActionResult UserPage()
         {
             ApplicationUser user = (ApplicationUser)Session["User"];

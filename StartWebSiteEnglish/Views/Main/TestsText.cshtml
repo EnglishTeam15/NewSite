@@ -34,25 +34,29 @@
 }
 
 @section Body{
-
-    <h2>Тест</h2>
+    <div>
+        <a style="margin: 0 10px 0 30px; float: left;" href="/Main/Grammer" data-back-to-jungle="" data-tooltip="Вернуться к Грамматике" class="icons-content-back">
+        <i class="fas fa-arrow-left" style="font-size:25px; margin-top: 20px;"></i></a>
+        <h2>Тест</h2>
+    </div>
     @if (Model != null)
     {
-        <div style="display: block; margin-bottom: 50px;">
-            @if (Model.Text != null)
+            if (Model.Text != null)
             {
-                <div id="translate" style="display: none; background: #fff;">
+                 <div style="display: block; margin-bottom: 50px;">
+
+             <div id="translate" style="display: none; background: #fff;">
                     <p>
-                        @Model.Text
+                       @Model.Text
                     </p>
-                </div>
-            }
+             </div>
             <button onclick="showTranslate()" type="submit" style="float: left; margin-left: 50px;" name="action" value="ViewText">Показать текст</button>
-        </div>
+                 </div>
+         }
         <div class="container">
             <div class="Quiz">
 
-                <h4 style="margin-top: 4%;"> <span class="label label-info">Questions :</span> </h4>
+                <h4 style="margin-top: 4%;"> <span class="label label-info">Вопросы :</span> </h4>
 
                @foreach (var question in Model.Questions)
                 {
@@ -78,7 +82,7 @@
                 }
                 <span id="countQuections" style="display:none;">@count</span>
                 <button type="button" id="SubmitQuiz" class="btn btn-default" style="margin-top: 10px; margin-bottom: 20px;"><span class="glyphicon glyphicon-ok"></span>  Проверить  </button>
-                }
+                
 
             </div> <!-- END QUIZ -->
         </div>
@@ -105,7 +109,7 @@
                 }
                 $.ajax({
                     type: 'POST',
-                    url: '@Url.Action("TestText", "Main")',
+                    url: '@Url.Action("TestsText", "Main")',
                     data: { resultQuiz },
                     success: function (response) {
                         if (response.result.length > 0)

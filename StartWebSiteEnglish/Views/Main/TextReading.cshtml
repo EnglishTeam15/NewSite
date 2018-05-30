@@ -1,10 +1,11 @@
-﻿@using StartWebSiteEnglish.Models
-@model  MaterialText
+﻿@using StartWebSiteEnglish
+@using StartWebSiteEnglish.Models
+@model   MaterialText
 
 @{
     ViewBag.Title = Model.Name;
     Layout = "~/Views/Shared/_Main.cshtml";
-    ApplicationUser user = (ApplicationUser)Session["User"];
+    //ApplicationUser user = (ApplicationUser)Session["User"];
 }
 
 @section Links{
@@ -91,20 +92,25 @@
         <p>@Model.Translate </p>
     </div>
     <div style="padding-bottom: 50px;">
-        <button type="submit">
-            <a style="text-decoration: none; color:#111;" href="/Admin/DeleteText/@Model.Id" title="Удалить текст @Model.Name?" onclick="return swalAlert(this)">Удалить текст</a>
-        </button>
-        <button type="submit">
-            <a style="text-decoration: none; color:#111;" href="/Admin/ChangeText/@Model.Id">Изменить</a>
-        </button>
-        <button onclick="showTranslate()" type="submit" name="action" value="ViewText">Показать перевод</button>
-        <button type="submit" name="action" value="PassTheTest">
-            <a style="text-decoration: none; color:#111;" href="/Main/TestsText/@Model.Id">Пройти тест</a>
-        </button>
-
-        <button type="submit" name="action" value="PassTheTest">
-            <a style="text-decoration: none; color:#111;" href="/Admin/AddTestForMaterial/@Model.Id">Добавить тест</a>
-        </button>
+        @if ((bool)Session["UserRole"])
+        {
+            <button type="submit">
+                <a style="text-decoration: none; color:#111;" href="/Admin/DeleteText/@Model.Id" title="Удалить текст @Model.Name?" onclick="return swalAlert(this)">Удалить текст</a>
+            </button>
+            <button type="submit">
+                <a style="text-decoration: none; color:#111;" href="/Admin/ChangeText/@Model.Id">Изменить</a>
+            </button>
+            <button type="submit" name="action" value="PassTheTest">
+                <a style="text-decoration: none; color:#111;" href="/Admin/AddTestForMaterial/@Model.Id">Добавить тест</a>
+            </button>
+        }
+        else
+        {
+            <button onclick="showTranslate()" type="submit" name="action" value="ViewText">Показать перевод</button>
+            <button type="submit" name="action" value="PassTheTest">
+                <a style="text-decoration: none; color:#111;" href="/Main/TestsText/@Model.Id">Пройти тест</a>
+            </button>
+        }
     </div>
 
 }

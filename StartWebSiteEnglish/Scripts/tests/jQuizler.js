@@ -1,16 +1,7 @@
 (function($){
     $.fn.extend({
         jQuizler: function (questions) {
-            // @todo избавиться от возможности двойного клика по кнопкам "cследующий", "предыдущий", "результат"
-            // @todo добавить возможность выбора нескольких вариантов ответа
-            // @todo добавить возможность внедрения названия теста на страницу результатов
-            // @todo избавиться от зависимости Bootsrap CSS
-            // @todo поработать над стилем элементов кнопок и прогресса
-            // @todo добавить кнопки "поделиться" или "like" для разных соц сетей ("ВКонтакте", "Однолкассники", ...)
-            // @todo разобраться с проблемой клика по элементу кнопки на странице результатов
-            // @todo переписать код, сделать его более изящным и чистым
-            // @todo сделать так, чтобы плагин можно было применять для 2х и более тестов на страницу
-            // @todo создать online инструмент для формирования и редактирования вопросов
+           
 
             if (questions == null)
                 throw 'No questions was provided.';
@@ -30,7 +21,7 @@
 
                 $(".intro").hide();
                 $(this).css("text-align", "left");
-                $('.progress.progress-info').css("display", "block");
+             //   $('.progress.progress-info').css("display", "block");
 
                 var question = $("#question-1");
 
@@ -130,8 +121,7 @@
 
                 $("div[id*='question-'] li").click(function () {
                     if (!reviewQuiz) {
-                        /*$(this).siblings().removeClass("selected");
-                        $(this).toggleClass("selected");*/
+                        
 
                         $(this).siblings().removeClass("btn-info");
                         $(this).toggleClass("btn-info");
@@ -171,16 +161,16 @@
                             //console.log("Ответ пользователя: " + element.index());
 
                             if (element.index() == question.correct) {
-                                element.removeClass("btn-info");
-                                element.addClass("btn-success");
+                                //element.removeClass("btn-info");
+                                //element.addClass("btn-success");
 
-                                buttonsHTML += "<button class=\"btn btn-success\"><i class='icon-ok-sign icon-white'></i> Вопрос " + (index + 1) + "</button>";
+                                //buttonsHTML += "<button class=\"btn btn-success\"><i class='icon-ok-sign icon-white'></i> Вопрос " + (index + 1) + "</button>";
                                 rightAnswers++;
                             } else {
-                                element.removeClass("btn-info");
-                                element.addClass("btn-danger");
+                                //element.removeClass("btn-info");
+                                //element.addClass("btn-danger");
 
-                                buttonsHTML += "<button class=\"btn btn-danger\"><i class='icon-remove-sign icon-white'></i> Вопрос " + (index + 1) + "</button>";
+                                //buttonsHTML += "<button class=\"btn btn-danger\"><i class='icon-remove-sign icon-white'></i> Вопрос " + (index + 1) + "</button>";
 
                                 for (var i = 0; i < question.correct.length; i++) {
                                     element.parent().find('li').eq(question.correct[i]).addClass("btn-success");
@@ -188,7 +178,7 @@
                             }
                         });
 
-                        resultHTML += "<p style=\"margin: 14px 0px\" class=\"ajax\">Вы ответили на " + Math.round(((rightAnswers * 100) / questions.length) * 100) / 100 + "% вопросов.</p>";
+                        resultHTML += "<p style=\"margin: 14px 0px\" class=\"ajax\">Вы ответили на " + Math.round(((rightAnswers * 100) / questions.length) * 100) / 100 + "% вопросов.</p><br/><p id=\"respostLevel\"></p>";
                         resultHTML += buttonsHTML;
                        // resultHTML += "<p style=\"margin-top:25px; text-align: center\"><button class=\"btn btn-large tostart\">Просмотреть вопросы</button></p>";
 
@@ -245,9 +235,9 @@
                         data: { count: rightAnswers, allquestion: questions.length },
                         datatype: 'json',
                         success: function (result) {
-                              $(".ajax").html += result;
+                           // var res = JSON.parse(result);
+                            $("#respostLevel").text(result);
                             console.log(result);
-                            alert(result);
                         }
                     });
                     return false;
@@ -331,14 +321,14 @@
 
                         var question = $("#question-1");
 
-                        question.css({opacity : '0', height : '0px'});
+                        //question.css({opacity : '0', height : '0px'});
 
                         question.animate({
                             opacity : '1',
                             height : '100%'
                         }, 500, function(e){});
 
-                        question.css('display', 'block');
+                        //question.css('display', 'block');
 
                       //  $(".progress.progress-info div").css("width", "0");
                      //   $(".progress.progress-info div").css("display", "block");

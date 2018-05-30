@@ -9,7 +9,7 @@ using StartWebSiteEnglish.AdminClasses;
 
 namespace StartWebSiteEnglish.Controlers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         MaterialContext db = new MaterialContext();

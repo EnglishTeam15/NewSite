@@ -14,7 +14,10 @@
 @section Body{
     <div style="display: inline-flex;">
         <h2 style="margin-right: 50px;">Изучаем грамматику</h2>
-        <a href="/Admin/AddGrammer">Добавить урок</a>
+        @if ((bool)Session["UserRole"])
+        {
+           <a href="/Admin/AddGrammer">Добавить урок</a>
+        }
     </div>
     <div>
         <div>

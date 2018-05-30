@@ -136,7 +136,7 @@ namespace StartWebSiteEnglish.Controlers
                     //await AuthenticationManager.SignIn(user);
 
                     Session["User"] = user;
-
+                    Session["UserRole"] = UserManager.IsInRole(user.Id, "Admin");
                     return RedirectToAction("Main", "Main", new { ConfirmedEmail = user.Email });
                 }
                 else
@@ -168,7 +168,7 @@ namespace StartWebSiteEnglish.Controlers
                         AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = true }, claim);
 
                         Session["User"] = user;
-
+                        Session["UserRole"] = UserManager.IsInRole(user.Id, "Admin");
                         FormsAuthentication.SetAuthCookie(model.UserName, true);
                         return RedirectToAction("Main", "Main");
                     }

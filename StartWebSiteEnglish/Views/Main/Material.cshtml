@@ -31,8 +31,10 @@
                 </div>
             }
 
-            @*@if (@u.RoleId == 1)*@
-            <a href="/Admin/AddMaterial">Добавить тескт</a>
+            @if ((bool)Session["UserRole"])
+            {
+                <a href="/Admin/AddMaterial">Добавить тескт</a>
+            }
         </div>
 
         <div class="reading-table">

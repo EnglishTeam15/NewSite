@@ -88,20 +88,21 @@
         @*@if (user.RoleId == 2)
         {*@
         @*<button type="submit"><a style="text-decoration: none; color:#111;" href="/Admin/DeleteGrammer/@Model.Id" title="Удалить @Model.Name?" onclick="return swalDelete('block')">Удалить</a></button>*@
-       @* <button type="submit" onclick="return showDelete('block')">Удалить</button>*@
-        <button type="submit">
-            <a style="text-decoration: none; color:#111;" href="/Admin/DeleteGrammer/@Model.Id" title="Удалить текст @Model.Name?" onclick="return swalAlert(this)">Удалить текст</a>
-        </button>
-        @*<button type="submit"><a style="text-decoration: none; color:#111;" href="/Admin/DeleteGrammer/@Model.Id">Удалить</a></button>*@
-        <button type="submit"> <a style="text-decoration: none; color:#111;" href="/Admin/ChangeGrammer/@Model.Id">Изменить</a></button>
-        <button type="submit" name="action" value="PassTheTestGrammer"> <a style="text-decoration: none; color:#111;" href="/Main/GrammerTest/@Model.Id">Пройти тест</a></button>
-        <button type="submit" name="action" value="Exisase"><a style="text-decoration: none; color:#111;" href="/Admin/TextTest/@Model.Id">Перейти к упражнениям</a></button>
-        @*  *@
-        @*@if (user.RoleId == 1)
+        @* <button type="submit" onclick="return showDelete('block')">Удалить</button>*@
+        @if ((bool)Session["UserRole"])
         {
-            <a href="/Admin/ChangeText/@Model.Id">Изменить</a>
-            <a href="/Admin/DeleteText/@Model.Id" title="Удалить текст @Model.Name?" onclick="return swalAlert(this)">Удалить материал</a>
-        }*@
+          <button type="submit">
+                 <a style="text-decoration: none; color:#111;" href="/Admin/DeleteGrammer/@Model.Id" title="Удалить текст @Model.Name?" onclick="return swalAlert(this)">Удалить текст</a>
+         </button>
+        @*<button type="submit"><a style="text-decoration: none; color:#111;" href="/Admin/DeleteGrammer/@Model.Id">Удалить</a></button>*@
+             <button type="submit"> <a style="text-decoration: none; color:#111;" href="/Admin/ChangeGrammer/@Model.Id">Изменить</a></button>
+        }
+        else
+        {
+        <button type="submit" name="action" value="PassTheTestGrammer"> <a style="text-decoration: none; color:#111;" href="/Main/GrammerTest/@Model.Id">Пройти тест</a></button>
+        @*<button type="submit" name="action" value="Exisase"><a style="text-decoration: none; color:#111;" href="/Admin/TextTest/@Model.Id">Перейти к упражнениям</a></button>*@
+
+        }
     </div>
 }
 
