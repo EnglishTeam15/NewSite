@@ -31,6 +31,7 @@
     @using (Html.BeginForm("EditUserName", "User", FormMethod.Post, new { @class = "contact_form" }))
     {
             <div style="display: table; margin-top:50px;">
+                <p>@ViewBag.ChangeLogin</p>
                 <input type="text" name="newUserName" placeholder="Введите новый логин"> <br />
                 <button class="submit" type="submit" style="margin: 0 auto;">Сохранить логин </button>
             </div>
@@ -40,6 +41,7 @@
     @using (Html.BeginForm("EditEmail", "User", FormMethod.Post, new { @class = "contact_form" }))
     {
             <div style="display: table;">
+                <p>@ViewBag.ChangeEmail</p>
                 <input type="email" name="newEmail" placeholder="Введите новый Email"><br />
                 <button class="submit" type="submit" style="margin: 0 auto;">Сохранить Email</button>
             </div>
@@ -50,6 +52,7 @@
     @using (Html.BeginForm("EditPassword", "User", FormMethod.Post, new { @class = "contact_form" }))
     {
             <div style="display: table;">
+                <p>@ViewBag.ChangePassword</p>
                 <input type="password" name="Password" placeholder="Старый пароль"><br />
                 <input type="password" name="NewPassword" placeholder="Новый пароль"><br />
                 <input type="password" name="ConfirmNewPassword" placeholder="Повтор нового пароль"><br />

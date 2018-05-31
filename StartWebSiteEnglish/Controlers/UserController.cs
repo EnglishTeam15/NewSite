@@ -64,15 +64,17 @@ namespace StartWebSiteEnglish.Controlers
         {
             HttpCookie userIdCookie = Request.Cookies["IdCookie"];
 
+            var user = (ApplicationUser)Session["User"];
 
-            if (ModelState.IsValid && userIdCookie != null)
+            if (ModelState.IsValid)
             {
-                var user = await this.UserManager.FindByIdAsync(userIdCookie.Value);
-                if (user != null)
+                var BDuser = await this.UserManager.FindByIdAsync(user.Id);
+                if (BDuser != null)
                 {
-                    var result = await this.UserManager.ChangePasswordAsync(userIdCookie.Value, model.Password, model.NewPassword);
+                    var result = await this.UserManager.ChangePasswordAsync(BDuser.Id, model.Password, model.NewPassword);
                     if (result.Succeeded)
                     {
+                        ViewBag.ChangePassword = "Пароль изменён";
                         return RedirectToAction("Setting");
                     }
                     else
@@ -88,7 +90,8 @@ namespace StartWebSiteEnglish.Controlers
                     ModelState.AddModelError(string.Empty, "Пользователь не найден");
                 }
             }
-            return View();
+            ViewBag.ChangePassword = "Неудалось изменить пароль";
+            return View("Setting");
         }
 
         [HttpPost]
@@ -100,6 +103,7 @@ namespace StartWebSiteEnglish.Controlers
                 var result = await UserManager.SetEmailAsync(user.Id, newEmail);
                 if (result.Succeeded)
                 {
+                    ViewBag.ChangeEmail = "Email изменён";
                     return RedirectToAction("Setting");
                 }
                 else
@@ -114,6 +118,7 @@ namespace StartWebSiteEnglish.Controlers
             {
                 ModelState.AddModelError(string.Empty, "Пользователь не найден");
             }
+            ViewBag.ChangeEmail = "Email не изменён";
             return View();
         }
 
@@ -127,6 +132,7 @@ namespace StartWebSiteEnglish.Controlers
                 var result = UserManager.Update(user);
                 if (result.Succeeded)
                 {
+                    ViewBag.ChangeLogin = "Логин изменён";
                     return RedirectToAction("Setting");
                 }
                 else
@@ -141,6 +147,7 @@ namespace StartWebSiteEnglish.Controlers
             {
                 ModelState.AddModelError(string.Empty, "Пользователь не найден");
             }
+            ViewBag.ChangeLogin = "Логие не изменён";
             return View();
         }
 

@@ -175,6 +175,7 @@ namespace StartWebSiteEnglish.Controlers
 
                         Session["User"] = user;
                         Session["UserRole"] = UserManager.IsInRole(user.Id, "Admin");
+
                         FormsAuthentication.SetAuthCookie(model.UserName, true);
                         return RedirectToAction("Main", "Main");
                     }
