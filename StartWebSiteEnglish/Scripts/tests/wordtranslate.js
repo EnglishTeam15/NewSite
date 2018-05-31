@@ -1,4 +1,6 @@
-﻿function QuizItem(idquest, question, variants, answer, enabled, replied, selectionOfUser) {
+﻿
+
+function QuizItem(idquest, question, variants, answer, enabled, replied, selectionOfUser) {
     this.idquest = idquest;
     this.question = question;
     this.variants = variants;
@@ -16,7 +18,7 @@ Array.prototype.rand = function () {
     return this.sort(function () { return 0.5 - Math.random(); });
 }
 var quizQuestions = [];
-var id = [];
+var currentidword = [];
 var dates = document.getElementById("datewords").innerText;
 var questions = JSON.parse(dates);
 for (var i = 0; i < questions.length; i++) {
@@ -187,23 +189,45 @@ function cleanUpTheLayout() {
     console.log("clean UPP!!");
 }
 
+
+$(function () {
+    $('.finalize').on('click', function () {
+        $.ajax({
+            type: 'POST',
+            url: '/Main/WordTranslate',
+            data: { id: currentidword },
+            //datatType: 'json',
+            success: function (response) {
+                console.log(response);
+            },
+            error: function (response) {
+                console.log("Error");
+            }
+        });
+    });
+});
+
+
 function finalize() {
-    $.ajax({
-        type: 'POST',
-        url: '/Main/WordTranslate',
-        data: { id: currentidword },
-        datatupe: 'json',
-        success: function (response) {
-            console.log(response);
-        },
-        error: function (response) {
-            console.log("Error");
-        }
+    $(function () {
+        //$('.finalize').on('click', function () {
+            $.ajax({
+                type: 'POST',
+                url: '/Main/WordTranslate',
+                data: { id: currentidword },
+                //datatType: 'json',
+                success: function (response) {
+                    console.log(response);
+                },
+                error: function (response) {
+                    console.log("Error");
+                }
+            });
+        //});
     });
     //var request = new XMLHttpRequest();
-    //request.open("POST", "/Main/WordTranslate", true);
+    //request.open("POST", "/Main/WordTranlate" );
     //request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    //request.send(id);
     //var status = request.status;
     //if (status == 200)
     //    console.log("Текст ответа: " + request.responseText)
@@ -211,6 +235,7 @@ function finalize() {
     //    console.log("Ресурс не найден")
     //else
     //    console.log(request.statusText)
+    //request.send(currentidword);
 
     cleanUpTheLayout();
 
@@ -267,8 +292,6 @@ function finalize() {
     mainDiv.appendChild(table);
     var trAll = document.getElementsByTagName("tr");
     console.log(trAll);
-
-    
 }
 function createQuestionLayout() {
     var mainDiv = document.getElementsByClassName('main')[0];

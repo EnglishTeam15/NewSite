@@ -258,7 +258,6 @@
     <Compile Include="Controlers\AdminController.cs" />
     <Compile Include="Controlers\HomeController.cs" />
     <Compile Include="Controlers\MainController.cs" />
-    <Compile Include="Controlers\RoleController.cs" />
     <Compile Include="Controlers\RolesController.cs" />
     <Compile Include="Controlers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -309,7 +308,6 @@
     <Content Include="Views\Main\WordTranslate.cshtml" />
     <Content Include="Views\Main\AllDictionary.cshtml" />
     <Content Include="Views\Main\ChooseWordForTraing.cshtml" />
-    <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\Main\GrammerTest.cshtml" />
     <Content Include="Views\Main\CardWord.cshtml" />
     <Content Include="Views\Main\ChoiceWord.cshtml" />

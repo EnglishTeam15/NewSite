@@ -60,11 +60,11 @@
 						}
 					}
 					$('#star-learn').css("display", "block");
-					//$('#bttn_Click').css("display", "none");
-					alert('You have Selected Student Ids- ' + selectedIds);
+                    //$('#bttn_Click').css("display", "none");
+                    console.log('You have Selected Student Ids- ' + selectedIds);
 				},
 				error: function (data) {
-					alert('error ' + data.error);
+                    console.log('error ' + data.error);
 				}
 			});
 		}
