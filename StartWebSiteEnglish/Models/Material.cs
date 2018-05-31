@@ -8,7 +8,7 @@ namespace StartWebSiteEnglish.Models
 {
     //Words
     #region
-    public class LearnedWord
+    public class LearnedMaterial
     {
         public int Id { get; set; }
     }

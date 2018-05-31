@@ -1,6 +1,6 @@
 ﻿@using StartWebSiteEnglish.Models
 @using StartWebSiteEnglish.HtmlHelpers
-@*@model  MaterialViewModel<Word>*@
+@model  List<Words>
 
 <div style="height: 85%;">
     <i class="fas fa-times-circle close" onclick="showLearn('none')"></i>
@@ -8,11 +8,6 @@
         <div class="material name" style="text-align: center;">
             <h3 id="title">Слова на изучении</h3>
         </div>
-        @*<div id="myDIV" class="header">
-                <input type="text" id="myInput" placeholder="Title...">
-                <span onclick="newElement()" class="addBtn">Add</span>
-            </div>*@
-
         <table class="table-hover">
             <thead>
                 <tr>
@@ -27,14 +22,14 @@
             </thead>
 
             <tbody class="text-table">
-                @*@foreach (var x in Model.Materials)
+                @foreach (var x in Model)
                     {
                         int i=1;
                         <tr>
                             <td>@i</td>
-                            <td data-label="Слово">x.Word</td>
-                            <td data-label="Перевод">x.Translate</td>
-                            <td class="imgword">x.ImageHref</td>
+                            <td data-label="Слово">@x.Word</td>
+                            <td data-label="Перевод">@x.Translation</td>
+                            <td class="imgword">@x.PictureUrl</td>
                             <td><a href="#" class="myButton">На узучение</a> </td>
                             <td>
                                 <a class="myButton" href="#">Удалить</a>
@@ -42,8 +37,8 @@
                             </td>
                         </tr>
                         i++;
-                    }*@
-                <tr>
+                    }
+                @*<tr>
                     <td>1</td>
                     <td><input type="checkbox" /></td>
                     <td data-label="Слово">Orakgjhvbg b  f dfg nge</td>
@@ -66,7 +61,7 @@
                         <a class="myButton" href="#">Удалить</a>
                         <i class="fas fa-trash-alt"></i>
                     </td>
-                </tr>
+                </tr>*@
             </tbody>
         </table>
     </div>

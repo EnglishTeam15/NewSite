@@ -7,6 +7,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
+using Microsoft.AspNet.Identity.Owin;
+using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
 
 namespace StartWebSiteEnglish.Controlers
 {
@@ -14,11 +17,34 @@ namespace StartWebSiteEnglish.Controlers
     public class MainController : Controller
     {
         MaterialContext db = new MaterialContext();
+      //  ApplicationUser user;
+
         [HttpGet]
         public ActionResult Main()
         {
+           // user = Session["User"] as ApplicationUser;
             Session["WordQuestions"] = null;
             return View();
+        }
+
+        private ApplicationUserManager UserManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+        }
+
+        private void SetPXLevel(int count)
+        {
+            ApplicationUser user = Session["User"] as ApplicationUser;
+            if (user != null)
+            {
+                 user.LevelProgress += count;
+                 UserManager.Update(user);
+            }
+            Session["User"] = user;
+
         }
 
         //text materials
@@ -82,21 +108,55 @@ namespace StartWebSiteEnglish.Controlers
         [HttpGet]
         public ViewResult TextReading(int id)
         {
-            using (MaterialContext db = new MaterialContext())
-            {
                 try
                 {
                     ViewBag.CountText = db.Materialtexts.Count();
                     MaterialText material = db.Materialtexts.FirstOrDefault(u => u.Id == id);
                     ViewBag.TitlePage = material.Name;
                     Session["TextReading"] = material;
+                    if (SearchIsReadintInUser(id))
+                    {
+                        ViewBag.IsReading = true;
+                    }
                     return View(material);
                 }
                 catch
                 {
                     return View();
                 }
+        }
+
+        private bool SearchIsReadintInUser(int id)
+        {
+           ApplicationUser user = Session["User"] as ApplicationUser;
+           var list =  SqlQueries.ReadMaterialTextDatabase(user.UserName);
+            var text =list.FirstOrDefault(s => s.Id == id);
+            if (text != null)
+            {
+                return true;
             }
+            return false;
+        }
+
+        //public JsonResult IsReading(int id)
+        //{
+        //    ApplicationUser user = Session["User"] as ApplicationUser;
+        //    //var material = (MaterialText)Session["TextReading"];
+        //    SqlQueries.AddIdToMaterialTextDatabase(user.UserName, id);
+        //    SetPXLevel(5);
+        //        ViewBag.IsReading = true;
+        //    return Json("Sucsess");
+        //}
+
+
+        public ActionResult IsReading(int id)
+        {
+            ApplicationUser user = Session["User"] as ApplicationUser;
+            SqlQueries.AddIdToMaterialTextDatabase(user.UserName, id);
+            var material = (MaterialText)Session["TextReading"];
+            SetPXLevel(5);
+            ViewBag.IsReading = true;
+            return View("TextReading", material);
         }
 
         public ActionResult TestsText(int id)
@@ -158,24 +218,29 @@ namespace StartWebSiteEnglish.Controlers
                     if (result.isCorrect)
                         count++;
                 }
-                ApplicationUser user = Session["User"] as ApplicationUser;
-                user.LevelProgress += count;
-                db.SaveChanges();
+                SetPXLevel(count);
+                
+
                 return Json(new { result = finalResultQuiz }, JsonRequestBehavior.AllowGet);
             }
         }
         #endregion
 
+
+
+
         //traing 
         #region
+            //доделать
         public ActionResult CardWord()
         {
             ViewBag.Title = "Тренировка Карточки слов";
             List<Words> words = Session["WordQuestions"] as List<Words>;
             //return View(words);
             List<WordCard> cards = new List<WordCard>();
-            foreach (var x in words) {
-                cards.Add(new WordCard {Word=x.Word, Translate=x.Translation, UrlPhoto=x.PictureUrl });
+            foreach (var x in words)
+            {
+                cards.Add(new WordCard { Word = x.Word, Translate = x.Translation, UrlPhoto = x.PictureUrl });
             }
             string sJon = JsonConvert.SerializeObject(cards);
             return View(cards);
@@ -233,26 +298,18 @@ namespace StartWebSiteEnglish.Controlers
             return RedirectToAction("Traning");
         }
 
-        //метод для добавления правильных отвечанных слов в словарь изучения пользователя
-        //нужно сделать
         [HttpPost]
         public JsonResult WordTranslate(int[] id)
         {
-            List<Words> words = Session["WordQuestions"] as List<Words>;
+            //List<Words> words = Session["WordQuestions"] as List<Words>;
+            ApplicationUser user = Session["User"] as ApplicationUser;
+
+            SetPXLevel(id.Length);
             for(int i=0; i<id.Length; i++)
             {
-                var word =words.FirstOrDefault(s => s.Id == id[i]);
-                //ApplicationUser user = Session["User"] as ApplicationUser;
-                //using(ApplicationContext dbapp = new ApplicationContext())
-                //{
-                    
-                //}
+                SqlQueries.AddIdToWordDatabase(user.UserName, id[i]);
             }
-            ApplicationUser user = Session["User"] as ApplicationUser;
-            user.LevelProgress += 10 * id.Length / 10;
-            db.SaveChanges();
-
-            return Json(new { response ="Sucsses"  }, JsonRequestBehavior.AllowGet);
+            return Json(new { response ="Sucsses" }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult TranslateWord()
@@ -321,6 +378,7 @@ namespace StartWebSiteEnglish.Controlers
         }
         #endregion
 
+
         //grammer
         #region
         public ActionResult Grammer(int page = 1)
@@ -358,7 +416,6 @@ namespace StartWebSiteEnglish.Controlers
             return View();
         }
 
-        //доработать добавления уровня занания языка после прохождения теста
         [HttpPost]
         public JsonResult FirstTest(int count, int allquestion)
         {

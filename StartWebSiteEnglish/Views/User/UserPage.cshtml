@@ -1,5 +1,5 @@
 ﻿@using StartWebSiteEnglish.Models
-
+@model List<Words>
 @{
     Layout = "~/Views/Shared/_Main.cshtml";
     ViewBag.Title = "Профиль";
@@ -41,10 +41,11 @@
         <div id="wrap" style="display: none;"></div>
 
         <div id="windowLearn" style="display: none;">
-            @Html.Partial("LearnDictionary")
+            @*Html.Partial("LearnDictionary", (List<Words>)ViewData["LearnUserWords"])*@
+            @Html.Partial("LearnDictionary", Model)
         </div>
         <div id="window" style="display: none;">
-            @Html.Partial("Dictionary")
+            @Html.Partial("Dictionary", Model)
         </div>
         <div class="user-profile" style="height: 550px;">
             <div class="col-sm-12" style="display:flex; height: 300px; ">
@@ -61,12 +62,6 @@
                             <div class="progress-value"> @user.LevelProgress  </div>
                         </div>
                     </div>*@
-                    <!-- <p><strong>Знания: </strong>
-                    <span class="tags">HTML5</span>
-                    <span class="tags">CSS3</span>
-                    <span class="tags">jQuery</span>
-                    <span class="tags">Bootstrap</span>
-                    </p> -->
                 </div>
 
                 <div class="col-xs-12 col-sm-8 text-center">
@@ -80,22 +75,12 @@
                     <figure>
                         <div class="avatar user" style="width: 200px; height: 200px; position: absolute;">
                         @using (Html.BeginForm("Upload", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                        {
-                            @*onclick="location.href='@Url.Action("UploadPhoto", "User", new { enctype = "multipart/form-data" })'"*@
-                            @*<i style="font-size: 130px;margin: 20px;"></i>*@
-                            
+                        {    
                             <img src="@user.PhotoUrl" height="150"/>
                             <input type="file" name="upload" style="font-size: 12px;"/>
                             <span>
                                 <input type="submit" value="Загрузить" style="font-size: 12px;"/>
                             </span>
-                          @*<img scr="@Model.PhotoUrl"  style="width: 100px; height:100px"/>
-                            
-                            @using (Html.BeginForm("UploadPhoto", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                            {
-                                   <input type="file" name="upload" style="margin-right: -50px;"/> <br>
-                                <input type="submit" value="Загрузить"  style="margin-top: -50px;border-color: #2CA8FF;"/>
-                            }*@
                          }
                         </div>
                     </figure>
@@ -105,26 +90,26 @@
 
 
             </div>
-            @*<div class="col-xs-12 divider text-center">
-                <div class="col-xs-12 col-sm-4 emphasis">
-                    <h2><strong>0</strong></h2>
+            <div class="col-xs-12 divider text-center">
+                @*<div class="col-xs-12 col-sm-4 emphasis">
+                    <h2><strong>@Model.Count</strong></h2>
                     <p><small>Слов выучено</small></p>
                     <button class="btn btn-success btn-block" id="ready" name="ready" onclick="showDictionary('block', 'Изученные слова','none')">
                         Посмотреть
                     </button>
-                </div>
+                </div>*@
                 <div class="col-xs-12 col-sm-4 emphasis">
-                    <h2><strong>0</strong></h2>
+                    <h2><strong>@Model.Count</strong></h2>
                     <p><small>Слов на изучении</small></p>
                     <button class="btn btn-info btn-block" id="learn" name="learn" onclick="showDictionary('block','Слова на изучении', 'block')">
                         Просмотреть
                     </button>
                 </div>
                 <div class="col-xs-12 col-sm-4 emphasis">
-                    <h2><strong>0</strong></h2>
+                    <h2><strong>@Model.Count</strong></h2>
                     <p><small>Словарный запас</small></p>
                 </div>
-            </div>*@
+            </div>
         </div>
 
     </div>

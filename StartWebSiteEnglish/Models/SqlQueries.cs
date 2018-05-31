@@ -60,9 +60,9 @@ public class SqlQueries
         }
     }
 
-    private static List<LearnedWord> ReadDatabase(string fullTableName)
+    private static List<LearnedMaterial> ReadDatabase(string fullTableName)
     {
-        List<LearnedWord> outList = new List<LearnedWord>();
+        List<LearnedMaterial> outList = new List<LearnedMaterial>();
         using (SqlConnection connection = new SqlConnection(connectionString))
         {
             string sqlExpression = "SELECT * FROM " + fullTableName;
@@ -74,7 +74,7 @@ public class SqlQueries
             {
                 while (reader.Read()) // построчно считываем данные
                 {
-                    outList.Add(new LearnedWord { Id = (int)reader.GetValue(0) });
+                    outList.Add(new LearnedMaterial { Id = (int)reader.GetValue(0) });
                 }
             }
         }
@@ -97,6 +97,7 @@ public class SqlQueries
         RenameDatabase(curentName + "MaterialText", rename + "MaterialText");
     }
 
+    //addd
     public static void AddIdToWordDatabase(string userName, int id)
     {
         AddIdToDatabase(userName + "Word", id);
@@ -117,23 +118,54 @@ public class SqlQueries
         AddIdToDatabase(userName + "MaterialText", id);
     }
 
-    public static List<LearnedWord> ReadWordDatabase(string userName)
+    //read
+    public static List<LearnedMaterial> ReadWordDatabase(string userName)
     {
         return ReadDatabase(userName + "Word");
     }
 
-    public static List<LearnedWord> ReadAdjectiveDatabase(string userName)
+    public static List<LearnedMaterial> ReadAdjectiveDatabase(string userName)
     {
         return ReadDatabase(userName + "Adjective");
     }
 
-    public static List<LearnedWord> ReadGrammerTextTextDatabase(string userName)
+    public static List<LearnedMaterial> ReadGrammerTextTextDatabase(string userName)
     {
         return ReadDatabase(userName + "GrammerText");
     }
 
-    public static List<LearnedWord> ReadMaterialTextDatabase(string userName)
+    public static List<LearnedMaterial> ReadMaterialTextDatabase(string userName)
     {
         return ReadDatabase(userName + "MaterialText");
+    }
+
+
+    //delete
+    public static void DeteleWordDatabase(string userName, int id)
+    {
+        DaleteIdToDatabase(userName + "Word", id);
+    }
+
+    public static void DetelGrammerTextDatabase(string userName, int id)
+    {
+        DaleteIdToDatabase(userName + "GrammerText", id);
+    }
+
+    public static void DetelMaterialTextDatabase(string userName, int id)
+    {
+        DaleteIdToDatabase(userName + "MaterialText", id);
+    }
+
+    private static void DaleteIdToDatabase(string fullTableName, int id)
+    {
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            connection.Open();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "DELETE FROM " + fullTableName + " WHERE ID ="+id;
+            cmd.ExecuteNonQuery();
+            connection.Close();
+        }
     }
 }

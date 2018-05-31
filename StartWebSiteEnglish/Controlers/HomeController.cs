@@ -105,6 +105,7 @@ namespace StartWebSiteEnglish.Controlers
                     await UserManager.AddToRoleAsync(user.Id, "User");
 
                     SqlQueries.CreateDatabases(user.UserName);
+                    ViewBag.ResultRegister = string.Format("На вашу почту {0} отправлено сообщение с подтвержением регистрации.",user.Email );
                     return PartialView("ResultRegister");
                 }
                 else

@@ -1,6 +1,6 @@
 ﻿@using StartWebSiteEnglish
 @using StartWebSiteEnglish.Models
-@model   MaterialText
+@model  MaterialText
 
 @{
     ViewBag.Title = Model.Name;
@@ -110,7 +110,38 @@
             <button type="submit" name="action" value="PassTheTest">
                 <a style="text-decoration: none; color:#111;" href="/Main/TestsText/@Model.Id">Пройти тест</a>
             </button>
+
+            if (ViewBag.IsReading == null)
+            {
+                <button type="submit" name="action" class="isread" value="PassTheTest">
+                    @*<a style="text-decoration: none; color:#111;" id="isread" title="@Model.Id">Прочитано</a>*@
+                    <a style="text-decoration: none; color:#111;" href="/Main/IsReading/@Model.Id">Прочитано</a>
+                </button>
+            }
+            else
+            {
+                <p>Вы уже читали этот текст</p>
+            }
         }
     </div>
 
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        $("#isread").on("click", function () {
+            var idtext = this.title;
+            $.ajax({
+                type: 'GET',
+                url: '/Main/IsReading',
+                data: { id: idtext },
+                datatType: 'json',
+                success: function (response) {
+                    console.log(response);
+                    $(".isread").css("display", "none");
+                },
+                error: function (response) {
+                    console.log(response);
+                }
+            });
+        });
+    </script>
 }

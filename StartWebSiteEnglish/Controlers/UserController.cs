@@ -23,8 +23,6 @@ namespace StartWebSiteEnglish.Controlers
 {
     public class UserController : Controller
     {
-        
-
         private ApplicationUserManager UserManager
         {
             get
@@ -38,7 +36,23 @@ namespace StartWebSiteEnglish.Controlers
         public ActionResult UserPage()
         {
             ApplicationUser user = (ApplicationUser)Session["User"];
-            return View();
+            var words= LearnWords(user.UserName);
+            return View(words);
+        }
+
+        private List<Words> LearnWords(string userName)
+        {
+            List<Words> words = new List<Words>();
+            var idwords = SqlQueries.ReadWordDatabase(userName);
+            using(MaterialContext db = new MaterialContext())
+            {
+                foreach(var x in idwords)
+                {
+                    words.Add(db.Words.FirstOrDefault(s => s.Id == x.Id));
+                }
+            }
+            ViewData["LearnUserWords"] = words;
+            return words;
         }
 
         public ActionResult Setting()
@@ -128,6 +142,7 @@ namespace StartWebSiteEnglish.Controlers
             ApplicationUser user = (ApplicationUser)Session["User"];
             if (user != null)
             {
+                SqlQueries.RenameDatabases(user.UserName,newUserName );
                 user.UserName = newUserName;
                 var result = UserManager.Update(user);
                 if (result.Succeeded)
@@ -150,7 +165,6 @@ namespace StartWebSiteEnglish.Controlers
             ViewBag.ChangeLogin = "Логие не изменён";
             return View();
         }
-
 
         static int appId = 6477544;
         static int groupId = 166392001;
@@ -203,8 +217,15 @@ namespace StartWebSiteEnglish.Controlers
                     }
                 }
             }
-
             return RedirectToAction("UserPage");
+        }
+
+
+        public ActionResult DeleteWord(int id)
+        {
+            var user = (ApplicationUser)Session["User"];
+            SqlQueries.DeteleWordDatabase(user.UserName, id);
+            return Json("Delete sucsess", JsonRequestBehavior.AllowGet);
         }
     }
 }

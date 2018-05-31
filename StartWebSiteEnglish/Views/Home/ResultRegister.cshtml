@@ -1,61 +1,37 @@
-﻿
-    <style>
-            /*#mask {
-            position: absolute;
-            left: 0;
-            top: 0;
-            z-index: 9000;
-            background-color: #000;
-            display: none;
-        }*/
+﻿<!DOCTYPE html>
 
-            #boxes .window {
-                position: absolute;
-                left: 0;
-                top: 0px;
-                -top: 40px;
-                width: 440px;
-                height: 200px;
-                display: none;
-                z-index: 9999;
-                padding: 20px;
-                overflow: hidden;
-            }
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Main/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Main/menustyle.css" rel="stylesheet" />
+    <link href="~/Content/UserPage/main.css" rel="stylesheet" />
 
-            #boxes #dialog {
-                width: 375px;
-                height: 203px;
-                padding: 10px;
-                background-color: #ffffff;
-            }
-
-            .top {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 370px;
-                height: 30px;
-                background: #0085cc;
-                padding: 8px 20px 6px 10px;
-            }
-
-            .close {
-                float: right;
-            }
-
-            .content {
-                padding-top: 35px;
-            }
-    </style>
-
-
-    <div id="boxes">
-        <div id="dialog" class="window">
-            Регистрация прошла успешла
-            <div class="top"><a href="#" class="link close">Закрыть</a></div>
-            <div class="content">Для входа на сайт проверьте свою почту и перейдите по ссылке.</div>
-        </div>
+    <link rel="stylesheet" type="text/css" href="css/media.css" media="all and (max-width: 900px)">
+    <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
+</head>
+<body style="background-image: url('../../fonts/retina_wood.png');">
+    <div id="header" class="alt">
+        <header>
+            <h1><a href="/Main/Main" style="text-decoration: none;">English</a> by DVYA</h1>
+        </header>
     </div>
 
-    <!-- Маска, затемняющая фон -->
-    @*<div id="mask"></div>*@
+
+    <div style="display:block;">
+        <div style="display:block;">
+            <center style=" min-height: 100vh; background-repeat: no-repeat;">
+                <div class="center-page">
+                    @ViewBag.ResultRegister
+                </div>
+            </center>
+        </div>
+        <footer>
+            <p style="padding-top: 15px;">© 2018</p>
+        </footer>
+    </div>
+
+</body>
+</html>
