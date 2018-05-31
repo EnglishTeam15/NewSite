@@ -41,9 +41,7 @@
         </header>
     </div>
 
-    <script>
-        $(".progress-bar-striped").css("width",@user.LevelProgress+%);
-    </script>
+    
     <div style="display:block;">
         <div style="display:block;">
             <center style=" min-height: 100vh; background-repeat: no-repeat;">
@@ -64,16 +62,20 @@
                                     </div>
                                     <div class="vertical-info">
                                         <div class="level" style="font-size: 15px; margin-bottom: 20px;">Уровень анлгийского языка: A @user.Сomplexity</div>
-                                        @*<div class="progress">
-                                            <div class="progress-bar progress-bar-striped bg-info" role="progressbar"  aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>*@
-                                       @* <div style="text-align:left; margin-left: 20px;">Очки: @user.LevelProgress</div>*@
-                                        <div class="vocabulary" style="font-size: 15px; margin-bottom: 20px;">Словарный запас: 0</div>
+                                        @*<div class="progress orange">
+                                              <div class="progress-bar" style="background:#fe3b3b;">
+                                             <div class="progress-value"> @user.LevelProgress  </div>
+                                           </div>
+                                         </div>*@
+                                        <div style="text-align:left; margin-left: 20px;">Очки: @user.LevelProgress</div>
+                                       @* <div class="vocabulary" style="font-size: 15px; margin-bottom: 20px;">Словарный запас: 0</div>*@
 
                                     </div>
                                 }
                             </div>
-
+                            @*<script>
+                                $(".progress .progress-bar").css('width','@user.LevelProgress%');
+                            </script>*@
                             <div class="menu_function">
                                 <div class="item"><a href="/Main/Main" class="left-link">Главная</a></div>
                                 <div class="item"><a href="/Main/AllDictionary" class="left-link">Словарь</a></div>

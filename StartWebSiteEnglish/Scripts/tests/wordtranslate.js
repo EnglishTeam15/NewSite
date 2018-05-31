@@ -206,16 +206,19 @@ $(function () {
         });
     });
 });
-
+    
 
 function finalize() {
-    $(function () {
-        //$('.finalize').on('click', function () {
+
+   // window.sessionStorage.setItem("CurrentIdWord", currentidword )
+    //window.sessionStorage.setItem("Mydata", data);
+    //$(function () {
+    //    //$('.finalize').on('click', function () {
             $.ajax({
                 type: 'POST',
                 url: '/Main/WordTranslate',
                 data: { id: currentidword },
-                //datatType: 'json',
+                datatType: 'json',
                 success: function (response) {
                     console.log(response);
                 },
@@ -224,7 +227,7 @@ function finalize() {
                 }
             });
         //});
-    });
+    //});
     //var request = new XMLHttpRequest();
     //request.open("POST", "/Main/WordTranlate" );
     //request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');

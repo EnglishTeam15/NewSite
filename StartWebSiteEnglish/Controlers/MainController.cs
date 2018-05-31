@@ -160,6 +160,7 @@ namespace StartWebSiteEnglish.Controlers
                 }
                 ApplicationUser user = Session["User"] as ApplicationUser;
                 user.LevelProgress += count;
+                db.SaveChanges();
                 return Json(new { result = finalResultQuiz }, JsonRequestBehavior.AllowGet);
             }
         }
@@ -249,7 +250,7 @@ namespace StartWebSiteEnglish.Controlers
             }
             ApplicationUser user = Session["User"] as ApplicationUser;
             user.LevelProgress += 10 * id.Length / 10;
-
+            db.SaveChanges();
 
             return Json(new { response ="Sucsses"  }, JsonRequestBehavior.AllowGet);
         }
@@ -307,7 +308,7 @@ namespace StartWebSiteEnglish.Controlers
                     }
                     //}
                     string sJon = JsonConvert.SerializeObject(quastions);
-                    ViewBag.WordQuestions = sJon;
+                    ViewBag.WordQuestions = ( sJon);
                     return true;
                 }
                 catch
@@ -375,6 +376,7 @@ namespace StartWebSiteEnglish.Controlers
                 level = 3;
             ApplicationUser user = Session["User"] as ApplicationUser;
             user.Сomplexity = level;
+            db.SaveChanges();
             ViewBag.YourLevel = string.Format("Ваш уровень знания языка " + level.ToString());
             return Json( ViewBag.YourLevel);
 

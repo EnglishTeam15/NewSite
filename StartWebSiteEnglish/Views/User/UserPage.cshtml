@@ -54,11 +54,13 @@
                     @*<p><strong>Email </strong> @Model.Email </p>*@
                     <p><strong>Email </strong> @user.Email </p>
                     <p><strong>Уровень </strong> A @user.Сomplexity </p>
-                    <div class="progress orange" style=" width: 250px; margin-top:50px;">
+                        <div style="text-align:left; margin-left: 20px;">Очки: @user.LevelProgress</div>
+
+                    @*<div class="progress orange" style=" width: 250px; margin-top:50px;">
                         <div class="progress-bar" style="background:#fe3b3b; width:@user.LevelProgress; ">
-                            <div class="progress-value"> @user.LevelProgress </div>
+                            <div class="progress-value"> @user.LevelProgress  </div>
                         </div>
-                    </div>
+                    </div>*@
                     <!-- <p><strong>Знания: </strong>
                     <span class="tags">HTML5</span>
                     <span class="tags">CSS3</span>
