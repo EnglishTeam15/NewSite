@@ -17,12 +17,10 @@ namespace StartWebSiteEnglish.Controlers
     public class MainController : Controller
     {
         MaterialContext db = new MaterialContext();
-      //  ApplicationUser user;
 
         [HttpGet]
         public ActionResult Main()
         {
-           // user = Session["User"] as ApplicationUser;
             Session["WordQuestions"] = null;
             return View();
         }
@@ -35,17 +33,7 @@ namespace StartWebSiteEnglish.Controlers
             }
         }
 
-        private void SetPXLevel(int count)
-        {
-            ApplicationUser user = Session["User"] as ApplicationUser;
-            if (user != null)
-            {
-                 user.LevelProgress += count;
-                 UserManager.Update(user);
-            }
-            Session["User"] = user;
-
-        }
+       
 
         //text materials
         #region
@@ -138,25 +126,16 @@ namespace StartWebSiteEnglish.Controlers
             return false;
         }
 
-        //public JsonResult IsReading(int id)
-        //{
-        //    ApplicationUser user = Session["User"] as ApplicationUser;
-        //    //var material = (MaterialText)Session["TextReading"];
-        //    SqlQueries.AddIdToMaterialTextDatabase(user.UserName, id);
-        //    SetPXLevel(5);
-        //        ViewBag.IsReading = true;
-        //    return Json("Sucsess");
-        //}
-
-
-        public ActionResult IsReading(int id)
+        private void SetPXLevel(int count)
         {
             ApplicationUser user = Session["User"] as ApplicationUser;
-            SqlQueries.AddIdToMaterialTextDatabase(user.UserName, id);
-            var material = (MaterialText)Session["TextReading"];
-            SetPXLevel(5);
-            ViewBag.IsReading = true;
-            return View("TextReading", material);
+            if (user != null)
+            {
+                user.LevelProgress += count;
+                UserManager.Update(user);
+            }
+            Session["User"] = user;
+
         }
 
         public ActionResult TestsText(int id)
@@ -227,11 +206,10 @@ namespace StartWebSiteEnglish.Controlers
         #endregion
 
 
-
-
         //traing 
         #region
-            //доделать
+            
+        //доделать
         public ActionResult CardWord()
         {
             ViewBag.Title = "Тренировка Карточки слов";
@@ -298,19 +276,17 @@ namespace StartWebSiteEnglish.Controlers
             return RedirectToAction("Traning");
         }
 
-        [HttpPost]
-        public JsonResult WordTranslate(int[] id)
-        {
-            //List<Words> words = Session["WordQuestions"] as List<Words>;
-            ApplicationUser user = Session["User"] as ApplicationUser;
-
-            SetPXLevel(id.Length);
-            for(int i=0; i<id.Length; i++)
-            {
-                SqlQueries.AddIdToWordDatabase(user.UserName, id[i]);
-            }
-            return Json(new { response ="Sucsses" }, JsonRequestBehavior.AllowGet);
-        }
+        //[HttpPost]
+        //public JsonResult WordTranslate(int[] id)
+        //{
+        //    ApplicationUser user = Session["User"] as ApplicationUser;
+        //    SetPXLevel(id.Length);
+        //    for(int i=0; i<id.Length; i++)
+        //    {
+        //        SqlQueries.AddIdToWordDatabase(user.UserName, id[i]);
+        //    }
+        //    return Json(new { response ="Sucsses" }, JsonRequestBehavior.AllowGet);
+        //}
 
         public ActionResult TranslateWord()
         {

@@ -131,7 +131,7 @@
             var idtext = this.title;
             $.ajax({
                 type: 'GET',
-                url: '/Main/IsReading',
+                url: '/User/IsReading',
                 data: { id: idtext },
                 datatType: 'json',
                 success: function (response) {

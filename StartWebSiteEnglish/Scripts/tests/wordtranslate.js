@@ -194,7 +194,7 @@ $(function () {
     $('.finalize').on('click', function () {
         $.ajax({
             type: 'POST',
-            url: '/Main/WordTranslate',
+            url: '/User/WordTranslate',
             data: { id: currentidword },
             //datatType: 'json',
             success: function (response) {
@@ -216,7 +216,7 @@ function finalize() {
     //    //$('.finalize').on('click', function () {
             $.ajax({
                 type: 'POST',
-                url: '/Main/WordTranslate',
+                url: '/User/WordTranslate',
                 data: { id: currentidword },
                 datatType: 'json',
                 success: function (response) {

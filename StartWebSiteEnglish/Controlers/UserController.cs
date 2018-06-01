@@ -227,5 +227,41 @@ namespace StartWebSiteEnglish.Controlers
             SqlQueries.DeteleWordDatabase(user.UserName, id);
             return Json("Delete sucsess", JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public JsonResult WordTranslate(int[] id)
+        {
+            ApplicationUser user = Session["User"] as ApplicationUser;
+            SetPXLevel(id.Length);
+            for (int i = 0; i < id.Length; i++)
+            {
+                SqlQueries.AddIdToWordDatabase(user.UserName, id[i]);
+            }
+            return Json(new { response = "Sucsses" }, JsonRequestBehavior.AllowGet);
+        }
+
+        private  void SetPXLevel(int count)
+        {
+            ApplicationUser user = Session["User"] as ApplicationUser;
+            if (user != null)
+            {
+
+                var outUser =  UserManager.FindById(user.Id);
+                outUser.LevelProgress += count;
+                
+                UserManager.Update(outUser);
+               Session["User"] = outUser;
+            }
+        }
+
+        public ActionResult IsReading(int id)
+        {
+            ApplicationUser user = Session["User"] as ApplicationUser;
+            SqlQueries.AddIdToMaterialTextDatabase(user.UserName, id);
+            var material = (MaterialText)Session["TextReading"];
+            SetPXLevel(5);
+            ViewBag.IsReading = true;
+            return View("TextReading", material);
+        }
     }
 }
