@@ -165,6 +165,7 @@ namespace StartWebSiteEnglish.Controlers
         {
             if (ModelState.IsValid)
             {
+
                 ApplicationUser user = await UserManager.FindAsync(model.UserName, model.Password);
                 if (user != null)
                 {
@@ -205,17 +206,95 @@ namespace StartWebSiteEnglish.Controlers
                 var user = await UserManager.FindByEmailAsync(model.Email);
                 if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
                 {
-                    return View("ForgotPasswordConfirmation");
+                    return View("ResultRegister");
                 }
-                string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                var callbackUrl = Url.Action("ResetPassword", "Account",
-                    new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                await UserManager.SendEmailAsync(user.Id, "Сброс пароля",
-                    "Для сброса пароля, перейдите по ссылке <a href=\"" + callbackUrl + "\">сбросить</a>");
-                return RedirectToAction("ForgotPasswordConfirmation", "Home");
+
+                MailAddress from = new MailAddress("kuzya2k123@gmail.com", "Web Registration");
+                // кому отправляем
+                MailAddress to = new MailAddress(user.Email);
+                // создаем объект сообщения
+                MailMessage mail = new MailMessage(from, to);
+                // тема письма
+                mail.Subject = "Востановление пароля";
+                // текст письма - включаем в него ссылку
+                mail.Body = string.Format("Уважаемый "+user.UserName+"," +
+                    " Для сброса пароля, перейдите по ссылке:" +
+                                "<a href=\"{0}\" title=\"сбросить\">{0}</a>",
+                    Url.Action("ResetPassword", "Home", new { Token = user.Id, Email = user.Email }, Request.Url.Scheme));
+                mail.IsBodyHtml = true;
+                // адрес smtp-сервера, с которого мы и будем отправлять письмо
+                SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+                // логин и пароль
+                smtp.Credentials = new NetworkCredential("englishsitepel@gmail.com", "205114qa");
+                smtp.EnableSsl = true;
+                smtp.Send(mail);
+
+                ViewBag.ResultRegister = "На вашу почту отправлено сообщение о смене пароля";
+                return View("ResultRegister");
             }
-            return View(model);
+            return View("Login");
         }
+
+
+        [AllowAnonymous]
+        public async Task<ActionResult> ResetPassword(string Token, string Email)
+        {
+            ApplicationUser user = this.UserManager.FindById(Token);
+            if (user != null)
+            {
+                if (user.Email == Email)
+                {
+                    user.EmailConfirmed = true;
+                    await UserManager.UpdateAsync(user);
+                    ClaimsIdentity claim = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+                    AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = true }, claim);
+                    //await AuthenticationManager.SignIn(user);
+                    ViewBag.UserName = user.UserName;
+                    return View();
+                }
+            }
+            return View("Index");
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ResetPassword(ResetPassword model)
+        {
+            var user = (ApplicationUser)ViewBag.UserName;
+            if (user != null)
+            {
+                if (ModelState.IsValid)
+                {
+                    var BDuser = await this.UserManager.FindByIdAsync(user.Id);
+                    if (BDuser != null)
+                    {
+                        var result = await this.UserManager.ChangePasswordAsync(BDuser.Id, BDuser.PasswordHash, model.NewPassword);
+                        if (result.Succeeded)
+                        {
+                            ViewBag.ChangePassword = "Пароль изменён";
+                            Session["User"] = null;
+                            return View("Index");
+                        }
+                        else
+                        {
+                            foreach (string error in result.Errors)
+                            {
+                                ModelState.AddModelError("", error);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "Пользователь не найден");
+                    }
+                }
+                ViewBag.ChangePassword = "Неудалось изменить пароль";
+
+            }
+            return View("Index");
+        }
+
 
 
         [Authorize]
@@ -227,7 +306,39 @@ namespace StartWebSiteEnglish.Controlers
             Session.Abandon();
             return RedirectToAction("Index", "Home");
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="message"></param>
+        /// <param name="scheme"></param>
+        /// <param name="action"></param>
+        /// <param name="conroller"></param>
+        private void SendMessageEmail(ApplicationUser user, string message,string scheme, string action, string conroller)
+        {
+            MailAddress from = new MailAddress("kuzya2k123@gmail.com", "Web Registration");
+            // кому отправляем
+            MailAddress to = new MailAddress(user.Email);
+            // создаем объект сообщения
+            MailMessage mail = new MailMessage(from, to);
+            // тема письма
+            mail.Subject = "Востановление пароля";
+            // текст письма - включаем в него ссылку
+            mail.Body = string.Format(message +
+                            "<a href=\"{0}\" title=\"сбросить\">{0}</a>",
+                Url.Action(action, conroller, new { Token = user.Id, Email = user.Email }, Request.Url.Scheme));
+            mail.IsBodyHtml = true;
+            // адрес smtp-сервера, с которого мы и будем отправлять письмо
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+            // логин и пароль
+            smtp.Credentials = new NetworkCredential("englishsitepel@gmail.com", "205114qa");
+            smtp.EnableSsl = true;
+            smtp.Send(mail);
+
+        }
     }
+
 
 
     //<add name = "UsersDB" connectionString="Data Source=ZENBOOK-UX510\SQLEXPRESS;AttachDbFilename='|DataDirectory|\AuthUsers.mdf" providerName="System.Data.SqlClient" />

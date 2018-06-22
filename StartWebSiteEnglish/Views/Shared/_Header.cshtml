@@ -1,0 +1,55 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Main/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/UserPage/main.css" rel="stylesheet" />
+    <link href="~/Content/FirstPage/registerstyle.css" rel="stylesheet" />
+
+    @RenderSection("Links", false)
+
+    <link rel="stylesheet" type="text/css" href="css/media.css" media="all and (max-width: 900px)">
+    <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
+</head>
+<body style="background-image: url('../../fonts/retina_wood.png');">
+    <div id="header" class="alt">
+        <header>
+            <h1><a href="/Home/Index" style="text-decoration: none;">English</a> ONLINE</h1>
+        </header>
+    </div>
+
+
+    <div style="display:block;">
+        <div style="display:block;">
+            <center style=" min-height: 100vh; background-repeat: no-repeat;">
+                <div class="center-page">
+                    @RenderSection("Body")
+                </div>
+            </center>
+        </div>
+        <footer>
+            <p style="padding-top: 15px;">© 2018</p>
+        </footer>
+    </div>
+
+    @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>*@
+
+    @*<script src="~/Scripts/js/jquery.min.js"></script>
+        <script src="~/Scripts/js/jquery.dropotron.min.js"></script>
+        <script src="~/Scripts/js/jquery.scrollgress.min.js"></script>*@
+    @*<script src="~/Scripts/js/skel.min.js"></script>
+        <script src="~/Scripts/js/util.js"></script>*@
+    @*<script src="~/Scripts/js/main.js"></script>*@
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
+</body>
+</html>

@@ -91,12 +91,15 @@ namespace StartWebSiteEnglish.Models
         public string Email { get; set; }
     }
 
-    public class EditPassword
+    public class EditPassword: ResetPassword
     {
         [Required(ErrorMessage = "Введите старый пароль")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+    }
 
+    public class ResetPassword
+    {
         [Required(ErrorMessage = "Введите новый пароль")]
         [DataType(DataType.Password)]
         public string NewPassword { get; set; }

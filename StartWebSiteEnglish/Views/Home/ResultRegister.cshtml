@@ -1,37 +1,9 @@
-﻿<!DOCTYPE html>
+﻿
+@{
+    ViewBag.Title = "ResetPassword";
+    Layout = "~/Views/Shared/_Header.cshtml";
+}
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/Main/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/Main/menustyle.css" rel="stylesheet" />
-    <link href="~/Content/UserPage/main.css" rel="stylesheet" />
-
-    <link rel="stylesheet" type="text/css" href="css/media.css" media="all and (max-width: 900px)">
-    <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
-</head>
-<body style="background-image: url('../../fonts/retina_wood.png');">
-    <div id="header" class="alt">
-        <header>
-            <h1><a href="/Main/Main" style="text-decoration: none;">English</a> by DVYA</h1>
-        </header>
-    </div>
-
-
-    <div style="display:block;">
-        <div style="display:block;">
-            <center style=" min-height: 100vh; background-repeat: no-repeat;">
-                <div class="center-page">
-                    @ViewBag.ResultRegister
-                </div>
-            </center>
-        </div>
-        <footer>
-            <p style="padding-top: 15px;">© 2018</p>
-        </footer>
-    </div>
-
-</body>
-</html>
+@section Body{
+    <h3>@ViewBag.ResultRegister</h3>
+}

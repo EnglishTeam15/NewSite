@@ -74,11 +74,13 @@ namespace StartWebSiteEnglish.Controlers
         }
 
         [HttpPost]
-        public async Task<ActionResult> EditPassword(EditPassword model)
+        public async Task<ActionResult> EditPassword(EditPassword model, ApplicationUser user=null)
         {
-            HttpCookie userIdCookie = Request.Cookies["IdCookie"];
-
-            var user = (ApplicationUser)Session["User"];
+            //HttpCookie userIdCookie = Request.Cookies["IdCookie"];
+            if (user == null)
+            {
+                 user = (ApplicationUser)Session["User"];
+            }
 
             if (ModelState.IsValid)
             {
@@ -89,6 +91,7 @@ namespace StartWebSiteEnglish.Controlers
                     if (result.Succeeded)
                     {
                         ViewBag.ChangePassword = "Пароль изменён";
+
                         return RedirectToAction("Setting");
                     }
                     else
